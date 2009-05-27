@@ -6,64 +6,25 @@
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="stylesheet.css" />
 
+<script type="text/javascript" src="js/jquery-1.3.1.js"></script>
+
 <script type="text/javascript">
-
- function closePopup()  
-  {  
-      document.getElementById("divSignin").style.display="none";      
-         objDiv = document.getElementById("divg");  
-         objDiv.style.display = "none";   
-         return false;  
-  }  
-  function showPopup()  
-  {  
-      try  
-      {    
-          document.getElementById("divSignin").style.display="block";      
-          objDiv = document.getElementById("divg");  
-             objDiv.style.display = "block";   
-             objDiv.style.width = document.body.scrollWidth;  
-             objDiv.style.height= document.body.scrollHeight;           
-             fnSetDivSigninLeft("divSignin");          
-      }  
-      catch(e)  
-      {  
-          alert(e);  
-      }  
-      return false     
-  }  
-  function fnSetDivSigninLeft(oElement)  
-     {  
-        var DivWidth = parseInt(document.getElementById(oElement).offsetWidth,10)  
-        var DivHeight = parseInt(document.getElementById(oElement).offsetHeight,10)  
-        document.getElementById(oElement).style.left = (document.body.offsetWidth / 2) - (DivWidth / 2)+200;  
-        document.getElementById(oElement).style.top = (document.body.offsetHeight / 2) -  ( DivHeight / 2);  
-        
-        return false;       
-     }  
-
-
-
-
-
-
-
-
-
-
-
 function enableField()
 {
-	document.getElementById('hostname_input').disabled=false 
-	document.getElementById('hostname_label').disabled=false 
+	$("#hostname_input").show();
+	$("#hostname_label").show();
+	
 }
 
 
 function disableField()
 {
-	document.getElementById('hostname_input').disabled=true 
-	document.getElementById('hostname_label').disabled=true 
+
+	$("#hostname_input").hide();
+	$("#hostname_label").hide();
+	
 }
+
 
 
 function ajaxFunction()
@@ -205,15 +166,18 @@ window.onLoad=is_logged_in();
 		<div id="left_container" class="container_left">
 
 
+			<!-- 
 			<div id="start_page_left"></div> 
+			-->
+			
 
 
-			<!--
+			<!--  -->
 			<div id="step1_left">
 			<div id="text1"> Good Day <b> $User! </b> &nbsp; &nbsp;</div> 
 			<div id="text2"> <a href="#">Start</a> | <a href="#">Use Log</a> | <a href="#">Sign Out</a> </div>
-			</div>
-			-->
+			</div> 
+			
 			
 		</div>
 		<!-- end of left container -->
@@ -223,44 +187,48 @@ window.onLoad=is_logged_in();
 		<div id="right_container" class="container_right">
 
 
-			<!-- step1 page 
+			<!-- step1 page -->
 			<div id="step1_right">
 
-			<p class="content_title">Choose distro type</p>
-			<p class="content_text"> Select from the following whether you need to build and installation image or instead play Live image.</p>
+
+			<p class="description"> Select from the following whether you need to build and installation image or instead play Live image.</p>
+			<p class="description_title">Choose distro type</p>
+
 
 			<form name="step1_form">
 
 
-			<label class="content_label_radio"> Live &nbsp;</label> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-			<input class="input_radio" type="radio" name="image_type" value="live" onclick="enableField();" > 
+			<div id="radio_label_div"><label class="content_label_radio"> Live </label></div>
+			<div id="radio_div"><input class="input_radio" type="radio" name="image_type" value="live" onclick="enableField();" > </div>
 			<br class="spacing" />
-			<label class="content_label_radio"> Installation &nbsp;</label>
+			<div id="radio_label_div"><label class="content_label_radio"> Installation </label></div>
 
-			<input class="input_radio" type="radio" name="image_type" value="install" onclick="disableField();" > 
+			<div id="radio_div"><input class="input_radio" type="radio" name="image_type" value="install" onclick="disableField();" ></div>
 
 
 			<br class="spacing" />
 			<br class="spacing" />
 
 
-			<label class="content_label"> Image Title </label> 
-			<input class="content_input" type="text" name="name" />
+			<div id="label_div" ><label class="content_label"> Image Title</label></div>
+			<div id="input_div" ><input class="content_input" type="text" name="name" /></div>
 			<br class="spacing" />
-			<label id="hostname_label" class="content_label"> Hostname &nbsp; </label> 
-			<input id="hostname_input" class="content_input" type="text" name="name"  >
-
-
-
+			<div id="label_div" ><label id="hostname_label" class="content_label"> Hostname </label></div> 
+			<div id="input_div" ><input id="hostname_input" class="content_input" type="text" name="name" /></div>
 
 			</form>
 
+			<br class="spacing" />
+			<div id="nextprev">
+			<a class="nnn" href="#"><img src="images/next.png" /></a>
 			</div>
-			-->
+
+			</div>
+			
 
 
 
-			<!-- start page -->
+			<!-- start page 
 			<div id="start_page_right">
 			<br class="spacing" /><br class="spacing" /><br class="spacing" /><br class="spacing" />
 			<p class="content_text"> Have you ever thought of a web service that creates a burnable custom version of GNU/Linux ? <br /> <br />Pardus Burn provides the ISO image of your custom Pardus. Just log in and enjoy the service. 		</p>
@@ -276,13 +244,13 @@ window.onLoad=is_logged_in();
 			<div id="content_links">
 
 			<a href="javascript:sign_in();" >Sign in</a> | 
-			<a href="javascript:showPopup();"> What was my password?</a> |
+			<a href="#"> What was my password?</a> |
 			<a href="#"> Not registered yet?</a>
 			</div>
 			<p id='error' class="error_text" ></p>
 			</form>
 
-			</div> 
+			</div> -->
 			
 
 			<!-- Sign Up page
@@ -317,8 +285,10 @@ window.onLoad=is_logged_in();
 	
 		</div>
 		<!-- end of right container -->
+
 	</div>
 
+	<div id="statusline">Distrotype</div>
 	<div id="footer">
 		
 		<a href="#">WIKI</a>
@@ -332,17 +302,4 @@ window.onLoad=is_logged_in();
 </div>
 
 </body>
-
-
- <div id="divg" class="ModalBackground graydiv">  
- </div>  
- <div id="divSignin" style="border: '1px soild green'; display: none; z-index: 100002;  
-     width: 550px; position: absolute;">  
- <div style="text-align:right;height:100px;width:100px;background-color:White;border:solid 1px lightyellow">  
- This is a popup;  
- <input type="button" value="Close Me" onclick="closePopup();" />  
- </div>  
-   
- </div> 
-
 </html>
