@@ -1,0 +1,290 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<title>Pardusman</title>
+<meta name="Generator" content="Vim/7.2">
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<link rel="stylesheet" type="text/css" href="stylesheet.css" />
+
+<script type="text/javascript">
+function enableField()
+{
+	document.getElementById('hostname_input').disabled=false 
+	document.getElementById('hostname_label').disabled=false 
+}
+
+
+function disableField()
+{
+	document.getElementById('hostname_input').disabled=true 
+	document.getElementById('hostname_label').disabled=true 
+}
+
+
+function ajaxFunction()
+{
+var xmlhttp;
+if (window.XMLHttpRequest)
+  {
+  // code for IE7+, Firefox, Chrome, Opera, Safari
+  xmlhttp=new XMLHttpRequest();
+  }
+else if (window.ActiveXObject)
+  {
+  // code for IE6, IE5
+  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+  }
+else
+  {
+  alert("Your browser does not support XMLHTTP!");
+  }
+
+  return xmlhttp;
+}
+
+
+function sign_out()
+{
+
+xmlhttp = ajaxFunction();
+ 
+xmlhttp.onreadystatechange=function()
+{
+if(xmlhttp.readyState==4)
+  {
+
+
+  if(xmlhttp.responseText=='True')
+  { window.location=""; }
+
+
+}
+
+}
+xmlhttp.open("GET","log_in?logout",true);
+xmlhttp.send(null);
+
+
+
+}
+
+
+function is_logged_in()
+{
+
+xmlhttp = ajaxFunction();
+ 
+xmlhttp.onreadystatechange=function()
+{
+if(xmlhttp.readyState==4)
+  {
+
+
+  if(xmlhttp.responseText=='True')
+  { load_step1();  }
+
+
+
+}
+
+}
+xmlhttp.open("GET","is_logged_in",true);
+xmlhttp.send(null);
+
+
+
+}
+
+
+xmlhttp = ajaxFunction();
+
+function sign_in()
+{
+
+xmlhttp = ajaxFunction();
+ 
+
+xmlhttp.onreadystatechange=function()
+{
+if(xmlhttp.readyState==4)
+  {
+  if(xmlhttp.responseText=='True')
+	{   load_step1(); }
+	else
+	{ document.getElementById('error').innerHTML='Wrong Username or Password ! <br /> Please try again.';}
+  }
+}
+xmlhttp.open("GET","log_in?username="+document.getElementsByName('username')[0].value+"&password="+document.getElementsByName('password')[0].value,true);
+xmlhttp.send(null);
+}
+
+
+
+
+function load_step1()
+{
+	
+	document.getElementById('left_container').innerHTML ='<div id="step1_left"><div id="text1"> Good Day <b> $User! </b> &nbsp; &nbsp;</div><div id="text2"> <a href="#">Start</a> | <a href="#">Use Log</a> | <a href="javascript:sign_out();">Sign Out</a> </div></div>';
+
+	document.getElementById('right_container').innerHTML = '<div id="step1_right"><p class="content_title">Choose distro type</p><p class="content_text"> Select from the following whether you need to build and installation image or instead play Live image.</p><form name="step1_form"><label class="content_label_radio"> Live &nbsp;</label> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input_radio" type="radio" name="image_type" value="live" onclick="enableField();" ><br class="spacing" /><label class="content_label_radio"> Installation &nbsp;</label><input class="input_radio" type="radio" name="image_type" value="install" onclick="disableField();" ><br class="spacing" /><br class="spacing" /><label class="content_label"> Image Title </label><input class="content_input" type="text" name="name" /><br class="spacing" /><label id="hostname_label" class="content_label"> Hostname &nbsp; </label><input id="hostname_input" class="content_input" type="text" name="name"  ></form></div>';
+}
+
+
+
+window.onLoad=is_logged_in();
+</script>
+
+
+
+
+
+</head>
+
+<body>
+<div id="page">
+
+
+	<div id="header">
+		<a href="#">WIKI</a>
+		<a href="#">PARDUS</a>
+		<a href="#">ABOUT</a>
+		<a href="#">BLOG</a>
+		<a href="#">HELP</a>
+	</div>
+
+	<div id="headerimage"></div>
+		
+	<div id="content">
+
+		<!-- start of left container -->
+		<div id="left_container" class="container_left">
+
+
+			<div id="start_page_left"></div> 
+
+
+			<!--
+			<div id="step1_left">
+			<div id="text1"> Good Day <b> $User! </b> &nbsp; &nbsp;</div> 
+			<div id="text2"> <a href="#">Start</a> | <a href="#">Use Log</a> | <a href="#">Sign Out</a> </div>
+			</div>
+			-->
+			
+		</div>
+		<!-- end of left container -->
+	
+	
+		<!-- start of right container -->
+		<div id="right_container" class="container_right">
+
+
+			<!-- step1 page 
+			<div id="step1_right">
+
+			<p class="content_title">Choose distro type</p>
+			<p class="content_text"> Select from the following whether you need to build and installation image or instead play Live image.</p>
+
+			<form name="step1_form">
+
+
+			<label class="content_label_radio"> Live &nbsp;</label> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			<input class="input_radio" type="radio" name="image_type" value="live" onclick="enableField();" > 
+			<br class="spacing" />
+			<label class="content_label_radio"> Installation &nbsp;</label>
+
+			<input class="input_radio" type="radio" name="image_type" value="install" onclick="disableField();" > 
+
+
+			<br class="spacing" />
+			<br class="spacing" />
+
+
+			<label class="content_label"> Image Title </label> 
+			<input class="content_input" type="text" name="name" />
+			<br class="spacing" />
+			<label id="hostname_label" class="content_label"> Hostname &nbsp; </label> 
+			<input id="hostname_input" class="content_input" type="text" name="name"  >
+
+
+
+
+			</form>
+
+			</div>
+			-->
+
+
+
+			<!-- start page -->
+			<div id="start_page_right">
+			<br class="spacing" /><br class="spacing" /><br class="spacing" /><br class="spacing" />
+			<p class="content_text"> Have you ever thought of a web service that creates a burnable custom version of GNU/Linux ? <br /> <br />Pardus Burn provides the ISO image of your custom Pardus. Just log in and enjoy the service. 		</p>
+			<br />
+			<form>
+
+			<div id="label_div" ><label class="content_label">User Name </label></div>
+			<div id="input_div" ><input class="content_input" type="text" name="username" /></div>
+			<br class="spacing" />
+			<div id="label_div" ><label class="content_label">Password </label></div>
+			<div id="input_div" ><input class="content_input" type="password" name="password" /></div>
+			<br class="spacing" />
+			<div id="content_links">
+
+			<a href="javascript:sign_in();" >Sign in</a> | 
+			<a href="#"> What was my password?</a> |
+			<a href="#"> Not registered yet?</a>
+			</div>
+			<p id='error' class="error_text" ></p>
+			</form>
+
+			</div> 
+			
+
+			<!-- Sign Up page
+			<div id="start_page_right">
+			<br class="spacing" /><br class="spacing" /><br class="spacing" /><br class="spacing" />
+			<p class="content_text"> Have you ever thought of a web service that creates a burnable custom version of GNU/Linux ? <br /> <br />Pardus Burn provides the ISO image of your custom Pardus. Just log in and enjoy the service. 		</p>
+			<br />
+			<form>
+
+			<div id="label_div" ><label class="content_label"> User Name</label></div>
+			<div id="input_div" ><input class="content_input" type="text" name="username" /></div>
+			<br class="spacing" />
+			<div id="label_div" ><label class="content_label"> e-mail</label></div>
+			<div id="input_div" ><input class="content_input" type="email" name="password" /></div>
+			<br class="spacing" />
+			<div id="label_div" ><label class="content_label"> Password</label></div> 
+			<div id="input_div" ><input class="content_input" type="password" name="password" /></div>
+			<br class="spacing" />
+			<div id="label_div" ><label class="content_label"> Confirm Password</label></div>
+			<div id="input_div" ><input class="content_input" type="password" name="password" /></div>
+			<div id="content_links">
+
+			<a href="javascript:sign_in();" >Sign in</a> | 
+			<a href="#"> What was my password?</a> |
+			<a href="#"> Not registered yet?</a>
+			</div>
+			<p id='error' class="error_text" ></p>
+			</form>
+
+			</div>  -->
+
+	
+		</div>
+		<!-- end of right container -->
+	</div>
+
+	<div id="footer">
+		
+		<a href="#">WIKI</a>
+		<a href="#">PARDUS</a>
+		<a href="#">ABOUT</a>
+		<a href="#">BLOG</a>
+		<a href="#">HELP</a>
+		<p> Copyright &copy Pardus Project </p>
+
+	</div>
+</div>
+
+</body>
+</html>

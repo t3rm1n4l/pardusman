@@ -1,0 +1,338 @@
+
+body
+{
+
+	background-image: url('images/background-strip.png') ;
+	
+}
+
+
+#page {
+
+	width : 800px;
+	margin-left : auto;
+	margin-right: auto;
+	min-height : 100%;
+	border : 2px solid black ;
+	background-color : #f0e6af ;
+
+} 
+
+/* header Text items */
+#header {
+	margin-right:10px;
+	height:15px;
+	color-black;
+	font-family:Arial;
+	text-align:right;
+	font-size:10px;
+	text-decoration:none;
+}
+
+#header a{
+	text-decoration:none;
+	color:black;
+	padding-right:10px;
+}
+
+#header a:hover{
+	text-decoration:none;
+	font-weight: bold;
+}
+
+
+
+/* header image items */
+#headerimage {
+	width : 800px;
+	
+	height : 128px;
+	
+	background-color:#ab370e;
+	background-image : url('images/header.png') ;
+}
+
+
+/* containers */
+
+#content {
+
+	
+	color:#ad3d14;
+	clear:left;
+}
+
+.container_left {
+
+
+	width:400px;
+	text-align:center;
+	float:left;	
+
+	min-height:350px;
+}
+
+
+.container_right
+{
+
+
+	width:400px;
+	text-align:center;
+	float:left;	
+	min-height:350px;
+
+}
+
+/* page left divs */
+
+#start_page_left
+{
+	width:319px;
+	height:398px;
+	position:relative;
+	background-image: url('images/tiger.png') ;
+	background-repeat: no-repeat;
+	bottom:-42px;
+}
+
+#step1_left
+{
+	padding-top:20px;
+	height:100%;
+	width:100%;
+	position:relative;
+	background-image: url('images/tiger_head.png') ;
+	background-repeat: no-repeat;
+
+	background-position: 40% 50%; 
+
+}
+
+/* page right div */
+
+#start_page_right
+{
+	height:370px;
+	position:relative;
+	background-image : url('images/burn_burn.png') ;
+	background-repeat : no-repeat;
+	background-position: 18% 10% ;
+	color:#ad3d14;
+	margin-left:-20px;
+	padding-right:50px;
+
+}
+
+#step1_right 
+{
+
+
+	position:relative;
+	background-image : url('images/step1.png') ;
+	background-repeat : no-repeat;
+	background-position: 50% 10% ;
+	color:#ad3d14;
+
+
+
+}
+
+/* letters , hyperlinks classes */
+#text1
+{
+	color:#ad3d14;
+	font-family:Arial;
+	font-size:20px;
+}
+
+text2
+{
+
+	color:#ad3d14;
+	font-size:15px;
+	text-decoration:none;
+
+}
+
+
+#text2 a
+{
+	color:#ad3d14;
+	font-size:15px;
+	text-decoration:none;
+}
+#text2 a:hover
+{
+
+	color:#473908;
+	font-size:15px;
+	text-decoration:none;
+
+}
+
+
+/* bit elements */
+
+#label_div
+{
+
+
+	position:relative;
+	width:100px;
+	float:left;
+	padding-top:3px;
+	text-align:right;
+
+}
+
+#input_div
+{
+
+
+	position:relative;
+	width:100px;
+	left:10px;
+	float:left;
+	text-align:right;
+
+}
+
+
+p.error_text
+{
+	position:relative;
+	font-size:11px;
+	color:red;
+	text-align:left;
+	padding-left:15px;
+}
+
+.content_text 
+{
+	position:relative;
+	font-size:11px;
+	color:#ad3d14;
+	text-align:left;
+	padding-left:15px;
+}
+
+.content_title
+{
+	position:relative;
+	font-family:Arial;
+	font-size:20px;
+	text-align:left;
+	padding-top:100px;
+	margin-bottom:-10px;
+	padding-left:-10px;
+	color:#ad3d14;
+}
+
+.content_label
+{
+        font-size:11px;
+        width:300px;
+        color:#ad3d14;
+	position:relative;
+}
+
+.content_label_radio
+{
+	font-family:Arial;
+        font-size:20px;
+	font-weight:bold;
+        width:300px;
+        padding-top:120px;
+        color:#ad3d14;
+}
+
+.spacing {
+	margin-bottom:10px;
+}
+
+.content_input
+{
+
+        font-size:11px;
+        color:black;
+	border : 1px solid #ad3d14;
+}
+
+
+
+.input_radio
+{
+	background: url('images/step1.png') no-repeat;
+	background-color:red;
+	height:20px;
+	width:20px;
+
+}
+
+#content_links
+{
+	margin-top:10px;
+	color:#ad3d14;
+	font-size:11px;
+	position:relative;
+
+}
+
+#content_links a
+{
+	text-decoration:none;
+	color:#ad3d14;
+	font-size:11px;
+}
+
+#content_links a:hover
+{
+	color:#5e1d06;
+}
+
+
+/*  footer part   */
+#footer {
+	clear:left;
+	background-color:#ddd4a3;
+	width: 650px;
+	margin-left:150px;
+
+	height:40px;
+	text-align:center;
+}
+
+#footer p {
+	position:relative;
+	top:-5px;
+	font-size:9px;
+	color:#44433c;
+}
+
+#footer a{
+	color:black;
+	font-family:arial;
+	font-size:10px;
+	padding-right:10px;
+	text-decoration:none;
+
+}
+
+
+#footer a:hover{
+	text-decoration:none;
+	font-weight: bold;
+}
+
+
+
+
+
+.tigerhead
+{
+	position:absolute;
+	bottom:30px;
+}
+
+
