@@ -48,6 +48,10 @@ $.get("is_logged_in", {},function(data){
 		load_step1();
 		
 	}
+	else
+	{
+		load_step0();
+	}
 
 });
 
@@ -107,16 +111,21 @@ $.get("register", { user: $('input[name="user"]').val(), email_id: $('input[name
 function load_step1()
 {
 
-	$("#left_container").load("content_pool.html #left #page1");
-	$("#right_container").load("content_pool.html #right #page1");
+	$("#left_container").load("ajax_pool #left #page1");
+	$("#right_container").load("ajax_pool #right #page1");
 	$("#statusline").text("Distrotype");
-
-	$.get("is_logged_in", {},function(data){
-		$('#username').ready(function(){$('#username').text(data)});
-	});
 
 }	
 
+
+function load_step0()
+{
+
+	$("#left_container").load("ajax_pool #left #page0");
+	$("#right_container").load("ajax_pool #right #page0");
+	$("#statusline").text("");
+
+}	
 
 
 $(is_logged_in());
@@ -190,37 +199,7 @@ $(is_logged_in());
 
 			</div> 
 			
-
-			<!-- Sign Up page
-			<div id="start_page_right">
-			<br class="spacing" /><br class="spacing" /><br class="spacing" /><br class="spacing" />
-			<p class="content_text"> Have you ever thought of a web service that creates a burnable custom version of GNU/Linux ? <br /> <br />Pardus Burn provides the ISO image of your custom Pardus. Just log in and enjoy the service. 		</p>
-			<br />
-			<form>
-
-			<div id="label_div" ><label class="content_label"> User Name</label></div>
-			<div id="input_div" ><input class="content_input" type="text" name="username" /></div>
-			<br class="spacing" />
-			<div id="label_div" ><label class="content_label"> e-mail</label></div>
-			<div id="input_div" ><input class="content_input" type="email" name="password" /></div>
-			<br class="spacing" />
-			<div id="label_div" ><label class="content_label"> Password</label></div> 
-			<div id="input_div" ><input class="content_input" type="password" name="password" /></div>
-			<br class="spacing" />
-			<div id="label_div" ><label class="content_label"> Confirm Password</label></div>
-			<div id="input_div" ><input class="content_input" type="password" name="password" /></div>
-			<div id="content_links">
-
-			<a href="javascript:sign_in();" >Sign in</a> | 
-			<a href="#"> What was my password?</a> |
-			<a href="#"> Not registered yet?</a>
-			</div>
-			<p id='error' class="error_text" ></p>
-			</form>
-
-			</div>  -->
-
-	
+			
 		</div>
 		<!-- end of right container -->
 

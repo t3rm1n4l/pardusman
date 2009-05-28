@@ -20,6 +20,9 @@ def home(request):
 	return HttpResponse(html)
 
 
+def ajax_pool(request):
+	if request.user:
+		return render_to_response('content_pool.html',{'user':str(request.user.username)})
 
 ###############################################################
 # TODO: Email Confirmation
