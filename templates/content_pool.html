@@ -1,0 +1,110 @@
+<html>
+
+
+
+<!-- start of left containers -->
+
+<div id="left">
+
+<div id="page0">
+
+	<div id="start_page_left"></div> 
+
+</div>		
+
+<div id="page1">
+			
+	<div id="step1_left">
+		<div id="text1"> Good Day <b id='username' > {{ user }}</b> </div> 
+		<div id="text2"> <a href="#">Start</a> | <a href="#">Use Log</a> | <a href="#" onClick="sign_out();" >Sign Out</a> </div>
+	</div> 
+			
+			
+</div>
+
+</div>
+
+
+<!-- end of left container -->
+	
+	
+<!-- start of right container -->
+<div id="right">
+
+<div id="page0">
+
+			<div id="start_page_right">
+			<br class="spacing" /><br class="spacing" /><br class="spacing" /><br class="spacing" />
+			<p class="content_text"> Have you ever thought of a web service that creates a burnable custom version of GNU/Linux ? <br /> <br />Pardus Burn provides the ISO image of your custom Pardus. Just log in and enjoy the service. 		</p>
+			<br />
+			<form>
+
+			<div id="label_div" ><label class="content_label">User Name </label></div>
+			<div id="input_div" ><input class="content_input" type="text" name="username" /></div>
+			<br class="spacing" />
+			<div id="label_div" ><label class="content_label">Password </label></div>
+			<div id="input_div" ><input class="content_input" type="password" name="password" /></div>
+			<br class="spacing" />
+			<div id="content_links">
+
+			<a href="javascript:sign_in();" >Sign in</a> | 
+			<a href="#"> What was my password?</a> |
+			<a href="#"> Not registered yet?</a>
+			</div>
+			<p id='error' class="error_text" ></p>
+			</form>
+
+			</div>
+
+</div>
+
+<div id="page1">
+			<div id="step1_right">
+
+
+			<p class="description"> Select from the following whether you need to build and installation image or instead play Live image.</p>
+			<p class="description_title">Choose distro type</p>
+
+
+			<form name="step1_form">
+
+
+			<div id="radio_label_div"><label class="content_label_radio"> Live </label></div>
+			<div id="radio_div"><input class="input_radio" type="radio" name="image_type" value="live" onclick="enableField();" checked ></input> </div>
+			<br class="spacing" />
+			<div id="radio_label_div"><label class="content_label_radio"> Installation </label></div>
+
+			<div id="radio_div"><input class="input_radio" type="radio" name="image_type" value="install" onclick="disableField();" ></input></div>
+
+
+			<br class="spacing" />
+			<br class="spacing" />
+
+
+			<div id="label_div" ><label class="content_label"> Image Title</label></div>
+			<div id="input_div" ><input class="content_input" type="text" name="name" /></div>
+			<br class="spacing" />
+			<div id="label_div" ><label id="hostname_label" class="content_label"> Hostname </label></div> 
+			<div id="input_div" ><input id="hostname_input" class="content_input" type="text" name="name" /></div>
+
+			</form>
+
+			<br class="spacing" />
+			<div id="nextprev">
+			<a href="#"><img src="images/next.png" /></a>
+			</div>
+
+			</div>
+			
+
+
+</div>
+
+
+
+</div>
+<!-- end of right container -->
+
+
+</html>
+
