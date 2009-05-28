@@ -45,13 +45,10 @@ $.get("is_logged_in", {},function(data){
 	
 	if(data!='False')
 	{
+
 		load_step1();
-		
 	}
-	else
-	{
-		load_step0();
-	}
+
 
 });
 
@@ -108,28 +105,66 @@ $.get("register", { user: $('input[name="user"]').val(), email_id: $('input[name
 
 
 
-function load_step1()
-{
-
-	$("#left_container").empty().load("ajax_pool #left #page1");
-	$("#right_container").empty().load("ajax_pool #right #page1");
-	$("#statusline").text("Distrotype");
-
-}	
 
 
 function load_step0()
 {
 
-	$("#left_container").empty().load("ajax_pool #left #page0");
-	$("#right_container").empty().load("ajax_pool #right #page0");
+	$("#left_container").load("ajax_pool #left #page0");
+	$("#right_container").load("ajax_pool #right #page0");
 	$("#statusline").text("");
 
 }	
 
+function load_step1()
+{
 
-$(is_logged_in());
 
+	$("#statusline").text("Distrotype");
+	$("#left_container").load("ajax_pool #left #page1");
+
+	if($("#step1_right").length)
+	{
+		$("#step1_right").show();
+	}
+	else
+	{	
+		$("#right_container").load("ajax_pool #right #page1");
+
+	}
+
+	$("#page2").hide();
+}	
+
+
+function load_step2()
+{
+
+	$("#step1_right").hide() ;
+
+	if($("#page2").length)
+	{
+		$("#page2").show();
+	}
+
+	else
+	{
+		$("<div />").load("ajax_pool #right #page2", function() {
+						
+								$(this).appendTo('#right_container');
+								});
+	}
+
+
+	$("#statusline").text("Distrotype > Repository");
+	
+
+}	
+
+
+$(function(){
+is_logged_in(); 
+});
 
 
 </script>
@@ -205,7 +240,7 @@ $(is_logged_in());
 
 	</div>
 
-	<div id="statusline"></div>
+	<div id="statusline" ></div>
 	<div id="footer">
 		
 		<a href="#">WIKI</a>

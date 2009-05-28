@@ -129,7 +129,7 @@ body
 
 
 	position:relative;
-	padding-top:110px;
+	padding-top:100px;
 	background-image : url('images/step1.png') ;
 	background-repeat : no-repeat;
 	background-attachment:relative;
@@ -450,7 +450,7 @@ p.error_text
 	left:90px; 
 	top:20px;
 	color:black;
-	font-size:10px;
+	font-size:12px;
 	
 
 }

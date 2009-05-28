@@ -12,6 +12,8 @@ import datetime,random,hashlib
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.mail import send_mail
 
+from pardusman import settings
+import os,re
 
 
 def home(request):
@@ -21,8 +23,31 @@ def home(request):
 
 
 def ajax_pool(request):
+
 	if request.user:
-		return render_to_response('content_pool.html',{'user':str(request.user.username)})
+		user = str(request.user.username)
+
+	
+	return render_to_response('content_pool.html',{'user':user, 'repos':repositories()})
+
+
+def repositories():
+
+	repo_urls = settings.REPOS_URL
+	regex = re.compile('<SourceName>(.*)</SourceName>')
+	repos = {}
+
+	
+	for repo in os.listdir(repo_urls):
+		if os.path.exists(os.path.join(repo_urls,repo,"pisi-index.xml")):
+			temp = open(os.path.join(repo_urls,repo,"pisi-index.xml"))
+			repos[re.findall(regex, temp.read(100))[0]] = os.path.join(repo_urls,repo)
+			temp.close()
+
+	return repos	
+
+
+
 
 ###############################################################
 # TODO: Email Confirmation
