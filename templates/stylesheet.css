@@ -184,7 +184,7 @@ text2
 
 
 	position:relative;
-	padding-top:3px;
+	padding-top:2px;
 	min-width:120px;
 	float:left;
 	text-align:left;
@@ -412,3 +412,55 @@ p.error_text
 }
 
 
+#popup
+{
+	width: 400px; 
+	height: 200px;
+	display:none;
+	position: absolute;
+	top: 260px;
+	left: 600px;
+	background-color:white;
+	border: 2px solid black;
+	background-image: url("images/popup_icon.png");
+	background-repeat: no-repeat;
+	background-position:8% 50%;
+
+}
+
+
+#popup_close 
+{
+	width:13px;
+	height:13px;
+	position:relative;
+	cursor:pointer;
+	background-color:gray;
+	left:380px;
+	text-align:center;
+	top:5px;
+	font-family:Arial;
+	border: 1px solid black;'
+
+}
+
+#sign_up
+{
+	position:relative; 
+	left:90px; 
+	top:20px;
+	color:black;
+	font-size:12px;
+	
+
+}
+
+
+input.submit
+{
+
+	color:white;
+	background-color:gray;
+	border:1px solid black;
+	font-size:13px;
+}

@@ -20,6 +20,13 @@ def home(request):
 	return HttpResponse(html)
 
 
+
+###############################################################
+# TODO: Email Confirmation
+# Also deal the forms, inside class functions exection problems
+###############################################################
+
+
 def register_user(request):
 	
 	if request.GET:
@@ -28,16 +35,25 @@ def register_user(request):
 	
 		valid_user=True
 	
+	
+		for i in new_data.values():
+			if i == "":
+				return HttpResponse("Do not leave as blank")	
+
 		try:
 			User.objects.get(username=str(form.data['user']))
-			valid_user=True
+			return HttpResponse("Username already taken !")
 		except User.DoesNotExist:
 			valid_user=False
 
 		
+		if form.is_valid() == False:
+			return HttpResponse("Invalid Email ID")
 
 
 		if valid_user==False and form.data['password1']==form.data['password2']:
+			if len(form.data['password1']) < 6:
+				return HttpResponse("Passwords should be atleast <br /> 6 characters in length")
 			new_user = form.save()
 			salt = hashlib.new('sha',str(random.random())).hexdigest()[:5]
 			activation_key = hashlib.new('sha',salt+new_user.username).hexdigest()
@@ -47,9 +63,10 @@ def register_user(request):
 
 			return HttpResponse('True')
 		else:
-			return HttpResponse('False')
+			return HttpResponse('Re-enter passwords again.')
 	else:
-		return HttpResponse('False')
+		
+		return HttpResponse('GET request failed.')
 
 
 def user_login(request):
@@ -77,6 +94,15 @@ def user_login(request):
 
 def is_logged_in(request):
 	if request.user.is_authenticated():
-		return HttpResponse('True')
+		return HttpResponse(str(request.user.username))
 	else:
 		return HttpResponse('False')
+
+
+###############################################################
+# TODO: Forgot Password
+# Dealing forgot password
+###############################################################
+
+def forgot_password(request):
+	pass

@@ -27,50 +27,12 @@ function disableField()
 
 
 
-function ajaxFunction()
-{
-var xmlhttp;
-if (window.XMLHttpRequest)
-  {
-  // code for IE7+, Firefox, Chrome, Opera, Safari
-  xmlhttp=new XMLHttpRequest();
-  }
-else if (window.ActiveXObject)
-  {
-  // code for IE6, IE5
-  xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-  }
-else
-  {
-  alert("Your browser does not support XMLHTTP!");
-  }
-
-  return xmlhttp;
-}
-
 
 function sign_out()
 {
 
-xmlhttp = ajaxFunction();
- 
-xmlhttp.onreadystatechange=function()
-{
-if(xmlhttp.readyState==4)
-  {
-
-
-  if(xmlhttp.responseText=='True')
-  { window.location=""; }
-
-
-}
-
-}
-xmlhttp.open("GET","log_in?logout",true);
-xmlhttp.send(null);
-
-
+	$.get("log_in",{logout:"True"});
+	window.location="";
 
 }
 
@@ -78,66 +40,89 @@ xmlhttp.send(null);
 function is_logged_in()
 {
 
-xmlhttp = ajaxFunction();
- 
-xmlhttp.onreadystatechange=function()
-{
-if(xmlhttp.readyState==4)
-  {
 
+$.get("is_logged_in", {},function(data){
+	
+	if(data!='False')
+	{
+		load_step1();
+		
+	}
 
-  if(xmlhttp.responseText=='True')
-  { load_step1();  }
-
-
-
-}
-
-}
-xmlhttp.open("GET","is_logged_in",true);
-xmlhttp.send(null);
-
+});
 
 
 }
-
-
-xmlhttp = ajaxFunction();
 
 function sign_in()
 {
 
-xmlhttp = ajaxFunction();
- 
 
-xmlhttp.onreadystatechange=function()
-{
-if(xmlhttp.readyState==4)
-  {
-  if(xmlhttp.responseText=='True')
-	{   load_step1(); }
+$.get("log_in", { username: $('input[name="username"]').val(), password: $('input[name="password"]').val() },
+  function(data){
+
+	
+	if(data=='True')
+	{
+		load_step1();
+	}
 	else
-	{ document.getElementById('error').innerHTML='Wrong Username or Password ! <br /> Please try again.';}
-  }
-}
-xmlhttp.open("GET","log_in?username="+document.getElementsByName('username')[0].value+"&password="+document.getElementsByName('password')[0].value,true);
-xmlhttp.send(null);
+	{ 
+		$('#error').html('Wrong Username or Password ! <br /> Please try again.'); 
+	}
+
+  });
+
+
 }
 
+
+function sign_up()
+{
+
+
+$.get("register", { user: $('input[name="user"]').val(), email_id: $('input[name="email_id"]').val(), password1: $('input[name="password1"]').val(), password2: $('input[name="password2"]').val() },
+  function(data){
+	
+	if(data=='True')
+	{
+		$('#error_signup').html("Account successfully created.<br />Confirmation is emailed.");
+		$('#popup').fadeOut(8000,function(){$('#error_signup').text("")});
+		$('#signup_form')[0].reset();
+	}
+	else
+	{ 
+		$('#error_signup').html(data);
+	}
+
+	
+
+  });
+
+
+}
 
 
 
 function load_step1()
 {
-	
-	document.getElementById('left_container').innerHTML ='<div id="step1_left"><div id="text1"> Good Day <b> $User! </b> &nbsp; &nbsp;</div><div id="text2"> <a href="#">Start</a> | <a href="#">Use Log</a> | <a href="javascript:sign_out();">Sign Out</a> </div></div>';
 
-	document.getElementById('right_container').innerHTML = '<div id="step1_right"><p class="content_title">Choose distro type</p><p class="content_text"> Select from the following whether you need to build and installation image or instead play Live image.</p><form name="step1_form"><label class="content_label_radio"> Live &nbsp;</label> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<input class="input_radio" type="radio" name="image_type" value="live" onclick="enableField();" ><br class="spacing" /><label class="content_label_radio"> Installation &nbsp;</label><input class="input_radio" type="radio" name="image_type" value="install" onclick="disableField();" ><br class="spacing" /><br class="spacing" /><label class="content_label"> Image Title </label><input class="content_input" type="text" name="name" /><br class="spacing" /><label id="hostname_label" class="content_label"> Hostname &nbsp; </label><input id="hostname_input" class="content_input" type="text" name="name"  ></form></div>';
-}
+	$("#left_container").load("content_pool.html #left #page1");
+	$("#right_container").load("content_pool.html #right #page1");
+	$("#statusline").text("Distrotype");
+
+	$.get("is_logged_in", {},function(data){
+		$('#username').ready(function(){$('#username').text(data)});
+	});
+
+}	
 
 
 
-window.onLoad=is_logged_in();
+$(is_logged_in());
+
+
+
 </script>
 
 
@@ -166,18 +151,10 @@ window.onLoad=is_logged_in();
 		<div id="left_container" class="container_left">
 
 
-			<!-- 
+
 			<div id="start_page_left"></div> 
-			-->
 			
-
-
-			<!--  -->
-			<div id="step1_left">
-			<div id="text1"> Good Day <b> $User! </b> &nbsp; &nbsp;</div> 
-			<div id="text2"> <a href="#">Start</a> | <a href="#">Use Log</a> | <a href="#">Sign Out</a> </div>
-			</div> 
-			
+					
 			
 		</div>
 		<!-- end of left container -->
@@ -185,50 +162,11 @@ window.onLoad=is_logged_in();
 	
 		<!-- start of right container -->
 		<div id="right_container" class="container_right">
-
-
-			<!-- step1 page -->
-			<div id="step1_right">
-
-
-			<p class="description"> Select from the following whether you need to build and installation image or instead play Live image.</p>
-			<p class="description_title">Choose distro type</p>
-
-
-			<form name="step1_form">
-
-
-			<div id="radio_label_div"><label class="content_label_radio"> Live </label></div>
-			<div id="radio_div"><input class="input_radio" type="radio" name="image_type" value="live" onclick="enableField();" > </div>
-			<br class="spacing" />
-			<div id="radio_label_div"><label class="content_label_radio"> Installation </label></div>
-
-			<div id="radio_div"><input class="input_radio" type="radio" name="image_type" value="install" onclick="disableField();" ></div>
-
-
-			<br class="spacing" />
-			<br class="spacing" />
-
-
-			<div id="label_div" ><label class="content_label"> Image Title</label></div>
-			<div id="input_div" ><input class="content_input" type="text" name="name" /></div>
-			<br class="spacing" />
-			<div id="label_div" ><label id="hostname_label" class="content_label"> Hostname </label></div> 
-			<div id="input_div" ><input id="hostname_input" class="content_input" type="text" name="name" /></div>
-
-			</form>
-
-			<br class="spacing" />
-			<div id="nextprev">
-			<a class="nnn" href="#"><img src="images/next.png" /></a>
-			</div>
-
-			</div>
 			
 
 
 
-			<!-- start page 
+			<!-- start page -->
 			<div id="start_page_right">
 			<br class="spacing" /><br class="spacing" /><br class="spacing" /><br class="spacing" />
 			<p class="content_text"> Have you ever thought of a web service that creates a burnable custom version of GNU/Linux ? <br /> <br />Pardus Burn provides the ISO image of your custom Pardus. Just log in and enjoy the service. 		</p>
@@ -245,12 +183,12 @@ window.onLoad=is_logged_in();
 
 			<a href="javascript:sign_in();" >Sign in</a> | 
 			<a href="#"> What was my password?</a> |
-			<a href="#"> Not registered yet?</a>
+			<a href="#" onClick='$("#popup").show();'> Not registered yet?</a>
 			</div>
 			<p id='error' class="error_text" ></p>
 			</form>
 
-			</div> -->
+			</div> 
 			
 
 			<!-- Sign Up page
@@ -288,7 +226,7 @@ window.onLoad=is_logged_in();
 
 	</div>
 
-	<div id="statusline">Distrotype</div>
+	<div id="statusline"></div>
 	<div id="footer">
 		
 		<a href="#">WIKI</a>
@@ -300,6 +238,38 @@ window.onLoad=is_logged_in();
 
 	</div>
 </div>
+
+<!-- Popup definision -->
+
+<div id="popup">
+	<div id="popup_close" onClick='$("#popup").hide();' ></div>
+	<div id="sign_up" >
+		<form id="signup_form">
+
+		<div id="label_div" ><label class="content_label">User Name </label></div>
+		<div id="input_div" ><input class="content_input" type="text" name="user" /></div>
+		<br class="spacing" />
+		<div id="label_div" ><label class="content_label">Email </label></div>
+		<div id="input_div" ><input class="content_input" type="email" name="email_id" /></div>
+		<br class="spacing" />
+		<div id="label_div" ><label class="content_label">Password </label></div>
+		<div id="input_div" ><input class="content_input" type="password" name="password1" /></div>
+		<br class="spacing" />
+		<div id="label_div" ><label class="content_label">Confirm  </label></div>
+		<div id="input_div" ><input class="content_input" type="password" name="password2" /></div>
+		<br />
+		</form>
+		<div style='text-align:right; padding-top:11px; width:280px'> 
+		<input type="submit" value="Sign up" class="submit" onClick="sign_up();" /> 
+		</div>
+			<p id='error_signup' style='margin-top:-8px;'></p>
+
+	</div>
+
+
+</div>
+
+
 
 </body>
 </html>
