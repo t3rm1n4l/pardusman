@@ -177,6 +177,19 @@ text2
 
 /* bit elements */
 
+#button_div
+{
+
+
+	position:relative;
+	min-width:10px;
+	left:80px;
+	float:left;
+	text-align:left;
+
+}
+
+
 
 
 #label_div
@@ -513,4 +526,29 @@ input.submit
 .highlighted
 {
 	border:2px dotted #f6ca30;
+}
+
+
+#loading
+{
+	width:220px; 
+	height:19px;
+	top:50%;
+	left:50%;
+	margin-left:-110px;
+	background-image: url('images/ajax-loader.gif');
+	background-repeat:no-repeat;
+	display:none;
+	position:absolute;
+	clear:both;
+}
+
+
+#package_div
+{
+	width:300px;
+	background-color:white;
+	height:300px;
+
+
 }
