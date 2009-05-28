@@ -140,8 +140,6 @@ function load_step1()
 function load_step2()
 {
 
-	$("#step1_right").hide() ;
-
 	if($("#page2").length)
 	{
 		$("#page2").show();
@@ -157,15 +155,94 @@ function load_step2()
 
 
 	$("#statusline").text("Distrotype > Repository");
+	$("#step1_right").hide() ;
+	$("#page3").hide() ;	
+}	
+
+
+function load_step3()
+{
+
+	if($("#page3").length)
+	{
+		$("#page3").show();
+	}
+
+	else
+	{
+		$("<div />").load("ajax_pool #right #page3", function() {
+						
+								$(this).appendTo('#right_container');
+
 	
+			$("#lang_selector div").hover(function(){$(this).fadeOut(100);$(this).fadeIn(500);});
+			$("#lang_selector div").click(function()
+				{
+					$("#lang_selector div").removeClass("highlighted");
+					$("#lang_selector div").removeClass("clicked");
+					$(this).addClass("highlighted");
+					$(this).addClass("clicked");
+				});
+
+
+
+								});
+	}
+
+
+	$("#statusline").text("Distrotype > Repository > Language");
+	
+
+
+
+	$("#page2").hide() ;
+
+
+
+
+
 
 }	
 
 
+function addtolangSelectList()
+{
+
+
+
+	if($('.selected_list div').length==0)
+	{
+		$('.clicked').addClass("default_lang");
+	}
+	else
+	{
+		$('.clicked').removeClass("default_lang");
+	}
+
+		$('.clicked').appendTo('.selected_list')
+
+}
+
+function addtolangList()
+{
+	$('.clicked').removeClass("default_lang");
+	
+
+	$('.clicked').appendTo('.list');
+
+	if($('.selected_list div').length==1)
+	{
+		$('.selected_list div').addClass("default_lang");
+	}
+
+}
+
+/*
 $(function(){
 is_logged_in(); 
 });
-
+*/
+$(function(){load_step3()});
 
 </script>
 

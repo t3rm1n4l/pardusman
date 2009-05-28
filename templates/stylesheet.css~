@@ -129,7 +129,7 @@ body
 
 
 	position:relative;
-	padding-top:100px;
+	padding-top:115px;
 	background-image : url('images/step1.png') ;
 	background-repeat : no-repeat;
 	background-attachment:relative;
@@ -463,4 +463,54 @@ input.submit
 	background-color:gray;
 	border:1px solid black;
 	font-size:13px;
+}
+
+#lang_selector
+{
+	background-color:white;
+	width:150px;
+	height:170px;
+	border:1px solid black;
+	float:left;
+	position:relative;
+	color:black;
+	text-align:center;
+	padding:16px;
+	
+
+}
+
+#lang
+{
+	padding-left:4px;
+	width:145px;
+	cursor:pointer;
+	text-align:left;
+}
+
+#lang_chooser
+{
+
+	width:50px;
+	height:200px;
+	float:left;
+	padding-top:70px;
+	position:relative;
+	text-align:center;
+
+}
+
+#lang_chooser img
+{
+	cursor:pointer;
+}
+
+.default_lang
+{
+	font-weight:bold;
+}
+
+.highlighted
+{
+	border:2px dotted #f6ca30;
 }

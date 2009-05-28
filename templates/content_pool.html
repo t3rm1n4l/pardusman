@@ -127,7 +127,7 @@
 			<br class="spacing" />
 			<div id="nextprev">
 			<a href="#"><img onclick="load_step1();" src="images/back.png" /></a>
-			<a href="#"><img src="images/next.png" /></a>
+			<a href="#"><img onclick="load_step3();" src="images/next.png" /></a>
 			</div>
 
 			</div>
@@ -146,12 +146,26 @@
 			<p class="description"> Select from the following list, the required language support for the customised distro</p>
 			<p class="description_title">Select language(s)</p>
 
+			<div id="languages" >
 
-			
+				<div id="lang_selector" class="list" >
+				<div id="lang">US English</div>
+				<div id="lang">Malayalam</div>
+				<div id="lang">Hindi</div>
+				<div id="lang">Tamil</div>
+				</div>
+				<div id="lang_chooser">
+				<img onclick="addtolangSelectList();" src="images/lang_next.png">
+				<img onclick="addtolangList();" src="images/lang_back.png">
+				</div>
+				<div id="lang_selector" class="selected_list" > </div>
+
+			</div>			
 
 			<br class="spacing" />
 			<div id="nextprev">
-			<a href="#"><img onclick="load_step2();" src="images/next.png" /></a>
+			<a href="#"><img onclick="load_step2();" src="images/back.png" /></a>
+			<a href="#"><img onclick="load_step4();" src="images/next.png" /></a>
 			</div>
 
 			</div>
