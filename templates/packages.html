@@ -10,12 +10,12 @@
 			
 			<p class="description">Search <input id='search' size="10" type="text" style=" font-family:arial; border:1px solid black; font-size:10px" ><img id='search_button' style="color:transparent; cursor:pointer; position:relative; top:6px; " src="images/search.png" onclick="
 
+$('tr[class$=container]').show();
 $('tr[class$=package]').hide();
-$('tr[class$=component]').hide();
-$('tr[class^='+$('#search').val()+']').show();"
+$('tr[class^='+$('#search').val()+']').show();
+$('tr[class$=component]').hide(); "
 
-
-  />&nbsp; <a  style="cursor:pointer; position:relative;"  onclick="$('tr[class$=component]').show(); $('tr[class$=package]').hide(); $('.direction').attr({src:'images/down.png'});">Reset</a>  </p>
+  />&nbsp; <a  style="cursor:pointer; position:relative;"  onclick="$('tr[class$=component]').show(); $('[class$=container]').hide(); $('.direction').attr({src:'images/down.png'});">Reset</a>  </p>
 			
 			<div id="package_div">
 
@@ -27,18 +27,37 @@ $('tr[class^='+$('#search').val()+']').show();"
 			<tr class="{{ component }}-component" >
 			<td>{{ component }}</td>
 			<td><input type="checkbox" onclick="$('.{{ component }}box').click();" ></td>
-			<td><img class="direction" onclick=" if($('[class$={{ component }}-package]').is(':visible')) {  $('[class$={{ component }}-package]').hide(); $(this).attr({src:'images/down.png'});}
-else { $('[class$={{ component }}-package]').show(); $(this).attr({src:'images/up.png'}); }" src="images/down.png"></td>
+
+
+
+			<td><img class="direction" onclick=" 
+
+
+if($('.{{ component }}-container').is(':visible'))
+{
+  $('.{{ component }}-container').hide(); 
+  $(this).attr({src:'images/down.png'});
+
+}
+else 
+{ 
+  $('.{{ component }}-container').show();
+  $('[class$={{ component }}-package]').show();
+  $(this).attr({src:'images/up.png'}); 
+
+}" 
+
+src="images/down.png"></td>
 			</tr>
 
 
-			<tr><td>
+			<tr  style="display:none" class='{{ component }}-container'  ><td>
 			<div id="pkg_padding">
-			<table " style=" border-left:1px dashed black;" class='{{ component }}'   >
+			<table " style=" border-left:1px dashed black;"  >
 			{% for pkg in packages %}
 				
 			
-			<tr style="display:none" class='{{ pkg }}-{{ component }}-package' >
+			<tr class='{{ pkg }}-{{ component }}-package' >
 
 			<td><div id="pkgs" >{{ pkg }}</div></td>
 			<td><input class='{{ component }}box' type="checkbox"></td>

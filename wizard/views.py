@@ -72,7 +72,7 @@ def packages():
 
 	tree = ET.parse(settings.REPOS_URL+'/repo1/'+'pisi-index.xml')
 	pkgs = tree.findall('Package')
-	for p in pkgs:
+	for p in pkgs[:]:
 		name = p.find('Name').text
 		partof = p.find('PartOf').text.replace('.','-')
 		packages.append((name,partof))

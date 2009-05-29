@@ -550,7 +550,6 @@ input.submit
 	border: 1px solid #ad3d14;	
         color:black;
 	padding:5px;
-
 }
 
 .border_left
@@ -559,10 +558,31 @@ input.submit
 
 }
 
+#package_div table
+{
+	border-spacing:0px;
+	
+}
+
+#package_div table tr
+{
+	border-spacing:0px;
+	padding:0px;
+	margin:0px;
+}
+
+#package_div table td
+{
+	border-spacing:0px;
+	padding:0px;
+	margin:0px;
+	
+}
 
 #pkg_padding
 {
 	margin-left:24px;
+	padding:0px;
 
 }
 
@@ -574,7 +594,7 @@ input.submit
 
 #pkgs
 {
-
+	padding:0px;
 	font-size:14px;
 	color:#332c2c;
 
