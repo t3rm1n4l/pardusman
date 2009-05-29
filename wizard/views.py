@@ -14,7 +14,7 @@ from django.core.mail import send_mail
 
 from pardusman import settings
 import os,re
-
+from xml.etree import ElementTree as ET
 
 def home(request):
 	site_template  = get_template('template.html')
@@ -28,11 +28,28 @@ def ajax_pool(request):
 		user = str(request.user.username)
 
 	
-	return render_to_response('content_pool.html',{'user':user, 'repos':repositories(),'package_map':packages()})
+	return render_to_response('content_pool.html',{'user':user, 'repos':repositories()})
+
+
+###############################################################
+# TODO: Package HTML generator
+################################################################
+
+
+def packages_pool_generator(request):
+	template = get_template('packages.html')
+	html = template.render(Context({'package_map':packages()}))
+	
+	handle = file(settings.MEDIA_ROOT + '/templates/repo.html',"w")
+	handle.write(html)
+	return HttpResponse("Done")
+
+
+def packages_pool(request):
+	return render_to_response('repo.html',{})
 
 
 def repositories():
-
 	repo_urls = settings.REPOS_URL
 	regex = re.compile('<SourceName>(.*)</SourceName>')
 	repos = {}
@@ -48,13 +65,20 @@ def repositories():
 
 
 
-###############################################################
-# TODO: XML Packages parser
-# get XML file from selected repository
-###############################################################
 def packages():
-	components = ['system-base','system-multimedia']
-	packages = [('package1','system-base'),('package2','system-base'),('package3','system-multimedia')]
+	
+	components = set()
+	packages =[]
+
+	tree = ET.parse(settings.REPOS_URL+'/repo1/'+'pisi-index.xml')
+	pkgs = tree.findall('Package')
+	for p in pkgs:
+		name = p.find('Name').text
+		partof = p.find('PartOf').text.replace('.','-')
+		packages.append((name,partof))
+		components.add(partof)
+
+
 
 	package_map = {}
 	

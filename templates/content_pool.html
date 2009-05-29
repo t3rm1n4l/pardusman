@@ -237,7 +237,7 @@ $('tr[class$=component]').hide();
 $('tr[class^='+$('#search').val()+']').show();"
 
 
-  />&nbsp; <a  style="cursor:pointer; position:relative;"  onclick="$('tr[class$=component]').show(); $('tr[class$=package]').hide();">Reset</a>  </p>
+  />&nbsp; <a  style="cursor:pointer; position:relative;"  onclick="$('tr[class$=component]').show(); $('tr[class$=package]').hide(); $('.direction').attr({src:'images/down.png'});">Reset</a>  </p>
 			
 			<div id="package_div">
 
@@ -249,7 +249,7 @@ $('tr[class^='+$('#search').val()+']').show();"
 			<tr class="{{ component }}-component" >
 			<td>{{ component }}</td>
 			<td><input type="checkbox" onclick="$('.{{ component }}box').click();" ></td>
-			<td><img onclick=" if($('[class$={{ component }}-package]').is(':visible')) {  $('[class$={{ component }}-package]').hide(); $(this).attr({src:'images/down.png'});}
+			<td><img class="direction" onclick=" if($('[class$={{ component }}-package]').is(':visible')) {  $('[class$={{ component }}-package]').hide(); $(this).attr({src:'images/down.png'});}
 else { $('[class$={{ component }}-package]').show(); $(this).attr({src:'images/up.png'}); }" src="images/down.png"></td>
 			</tr>
 

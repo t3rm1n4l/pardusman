@@ -274,7 +274,7 @@ function load_step5()
 
 	else
 	{
-		$("<div />").load("ajax_pool #right #page5", function() {
+		$("<div />").load("packages_pool #right #page5", function() {
 
 
 			
@@ -358,8 +358,8 @@ $(function()
 	load_step5();
 
 });
-
 */
+
 
 </script>
 

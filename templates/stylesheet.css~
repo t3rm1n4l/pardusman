@@ -530,7 +530,7 @@ input.submit
 
 #loading
 {
-	width:220px; 
+	width:250px; 
 	height:19px;
 	top:50%;
 	left:50%;
@@ -566,6 +566,11 @@ input.submit
 
 }
 
+
+.hand
+{
+	cursor:pointer;
+}
 
 #pkgs
 {
