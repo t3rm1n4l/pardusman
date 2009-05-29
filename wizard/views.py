@@ -28,7 +28,7 @@ def ajax_pool(request):
 		user = str(request.user.username)
 
 	
-	return render_to_response('content_pool.html',{'user':user, 'repos':repositories()})
+	return render_to_response('content_pool.html',{'user':user, 'repos':repositories(),'package_map':packages()})
 
 
 def repositories():
@@ -46,6 +46,28 @@ def repositories():
 
 	return repos	
 
+
+
+###############################################################
+# TODO: XML Packages parser
+# get XML file from selected repository
+###############################################################
+def packages():
+	components = ['system-base','system-multimedia']
+	packages = [('package1','system-base'),('package2','system-base'),('package3','system-multimedia')]
+
+	package_map = {}
+	
+	def map_generate(pkgs):
+		if pkgs[1] == comp:
+			return pkgs[0]
+
+	for comp in components:
+		P = map(map_generate,packages)
+		package_map[comp] = [ pkg for pkg in P if pkg is not None] 
+		'''Or same can be done filter(None,P)'''
+
+	return package_map
 
 
 

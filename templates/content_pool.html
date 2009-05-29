@@ -39,12 +39,15 @@
 			<br />
 			<form>
 
-			<div id="label_div" ><label class="content_label">User Name </label></div>
-			<div id="input_div" ><input class="content_input" type="text" name="username" /></div>
-			<br class="spacing" />
-			<div id="label_div" ><label class="content_label">Password </label></div>
-			<div id="input_div" ><input class="content_input" type="password" name="password" /></div>
-			<br class="spacing" />
+			<table>
+			<tr><td ><label class="content_label">User Name </label></td>
+			<td><input class="content_input" type="text" name="username" /></td></tr>
+
+			<tr><td ><label class="content_label">Password </label></td>
+			<td><input class="content_input" type="password" name="password" /></td></tr>
+			</table>
+
+
 			<div id="content_links">
 
 			<a href="javascript:sign_in();" >Sign in</a> | 
@@ -187,14 +190,18 @@
 			<p class="description_title">Upload RELEASE File and Home directory data</p>
 
 			<form>
+			<table>
 
-			<div id="label_div" ><label class="content_label">RELEASE File &nbsp; &nbsp;</label></div> 
-			<div id="input_div" ><input class="content_input" type="text" name="username" /> </div> 
-			<div id="button_div" ><a href="#"><img style="color:transparent"  src="images/button.png"></a></div>
-			<br class="spacing" />
-			<div id="label_div" ><label class="content_label">Home Directory</label> </div>
-			<div id="input_div" ><input class="content_input" type="password" name="password" /> </div>
-			<div id="button_div" ><a href="#"><img style="color:transparent" src="images/button.png"></a></div>
+			<tr><td><label class="content_label">RELEASE File &nbsp; &nbsp;</label></td> 
+			<td><input class="content_input" type="text" name="username" /> </td> 
+			<td><a href="#"><img style="color:transparent"  src="images/button.png"></a></td></tr>
+
+			<tr><td><label class="content_label">Home Directory</label></td>
+			<td><input class="content_input" type="password" name="password" /> </td>
+			<td><a href="#"><img style="color:transparent" src="images/button.png"></a></td></tr>
+
+			</table>
+
 			<br class="spacing" />
 
 			</form>
@@ -222,14 +229,58 @@
 			<p class="description"> You can select the required components and packages from the dropdown widget for building the custom version of pardus </p>
 			<p class="description_title">Select required packages</p>
 
-			<form>
+			
+			<p class="description">Search <input id='search' size="10" type="text" style=" font-family:arial; border:1px solid black; font-size:10px" ><img id='search_button' style="color:transparent; cursor:pointer; position:relative; top:6px; " src="images/search.png" onclick="
+
+$('tr[class$=package]').hide();
+$('tr[class$=component]').hide();
+$('tr[class^='+$('#search').val()+']').show();"
 
 
-			<br class="spacing" />
+  />&nbsp; <a  style="cursor:pointer; position:relative;"  onclick="$('tr[class$=component]').show(); $('tr[class$=package]').hide();">Reset</a>  </p>
+			
+			<div id="package_div">
 
-			</form>
+			<table id="pkg_components">
 
-			<br class="spacing" />
+
+			{% for component,packages in package_map.items %}
+
+			<tr class="{{ component }}-component" >
+			<td>{{ component }}</td>
+			<td><input type="checkbox" onclick="$('.{{ component }}box').click();" ></td>
+			<td><img onclick=" if($('[class$={{ component }}-package]').is(':visible')) {  $('[class$={{ component }}-package]').hide(); $(this).attr({src:'images/down.png'});}
+else { $('[class$={{ component }}-package]').show(); $(this).attr({src:'images/up.png'}); }" src="images/down.png"></td>
+			</tr>
+
+
+			<tr><td>
+			<div id="pkg_padding">
+			<table " style=" border-left:1px dashed black;" class='{{ component }}'   >
+			{% for pkg in packages %}
+				
+			
+			<tr style="display:none" class='{{ pkg }}-{{ component }}-package' >
+
+			<td><div id="pkgs" >{{ pkg }}</div></td>
+			<td><input class='{{ component }}box' type="checkbox"></td>
+
+			</tr>
+
+			{% endfor %}
+			</div>
+			</table>
+
+			</td>
+			<tr/>
+
+			{% endfor %}
+
+			</table>
+
+
+			</div>
+
 			<div id="nextprev">
 			<a href="#"><img onclick="load_step4();" src="images/back.png" /></a>
 			<a href="#"><img onclick="load_step6();" src="images/next.png" /></a>

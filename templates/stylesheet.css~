@@ -296,12 +296,11 @@ p.error_text
 
 .content_label
 {
-	padding-left:40px;
+	text-align:left;
         font-size:12px;
 	font-family:sans-serif;
-        width:300px;
         color:#ad3d14;
-	position:relative;
+
 }
 
 .content_label_radio
@@ -541,4 +540,37 @@ input.submit
 	display:none;
 	position:absolute;
 	clear:both;
+}
+
+
+#package_div
+{
+	width:230px;
+	background-color:white;
+	border: 1px solid #ad3d14;	
+        color:black;
+	padding:5px;
+
+}
+
+.border_left
+{
+	border-left: 1px solid #ad3d14;	
+
+}
+
+
+#pkg_padding
+{
+	margin-left:24px;
+
+}
+
+
+#pkgs
+{
+
+	font-size:14px;
+	color:#332c2c;
+
 }

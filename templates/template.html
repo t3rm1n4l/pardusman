@@ -5,8 +5,12 @@
 <meta name="Generator" content="Vim/7.2">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+<link rel="stylesheet" type="text/css" href="jquery.safari-checkbox.css" />
 
 <script type="text/javascript" src="js/jquery-1.3.1.js"></script>
+<script type="text/javascript" src="js/jquery.checkbox.min.js"></script>
+
+
 
 <script type="text/javascript">
 
@@ -271,14 +275,36 @@ function load_step5()
 	else
 	{
 		$("<div />").load("ajax_pool #right #page5", function() {
-						
-								$(this).appendTo('#right_container');
+
+
+			
+							$(this).appendTo('#right_container');
+
+
+	
+							
+
+				$(function() {  
+     					$("#search").keypress(function (e) {  
+         			if ((e.which && e.which == 13) || (e.keyCode && e.keyCode == 13)) {  
+            				$('#search_button').click(); 
+            				return false;  
+         			} else {  
+             				return true;  
+         			}  
+     				});  
+				});
+
+
 								$("#loading").hide();
-								});
+
+				$('input:checkbox').checkbox({cls:'jquery-safari-checkbox'});
+});
+
 	}
 
 
-	$("#statusline").text("Distrotype > Repository > Languages > Upload");
+	$("#statusline").text("Distrotype > Repository > Languages > Upload > Packages");
 	$("#page6").hide() ;
 	$("#page4").hide() ;	
 }
@@ -318,13 +344,20 @@ function addtolangList()
 
 }
 
-
+/*
 $(function(){
 
 is_logged_in(); 
 $("#loading").hide();
 });
 
+*/
+
+$(function()
+{
+	load_step5();
+
+});
 
 
 
@@ -378,12 +411,14 @@ $("#loading").hide();
 			<br />
 			<form onsubmit="sign_in()";>
 
-			<div id="label_div" ><label class="content_label">User Name </label></div>
-			<div id="input_div" ><input class="content_input" type="text" name="username" /></div>
-			<br class="spacing" />
-			<div id="label_div" ><label class="content_label">Password </label></div>
-			<div id="input_div" ><input class="content_input" type="password" name="password" /></div>
-			<br class="spacing" />
+			<table>
+			<tr><td ><label class="content_label">User Name </label></td>
+			<td><input class="content_input" type="text" name="username" /></td></tr>
+
+			<tr><td ><label class="content_label">Password </label></td>
+			<td><input class="content_input" type="password" name="password" /></td></tr>
+			</table>
+
 			<div id="content_links">
 
 			<a href="javascript:sign_in();" >Sign in</a> | 
