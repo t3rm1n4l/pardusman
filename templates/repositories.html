@@ -1,0 +1,48 @@
+<html>
+
+<!-- startof right container -->
+<div id="right">
+
+<div id="page2">
+			<div id="step1_right">
+
+
+			<p class="description"> Select from the following whether which repository you would like to use for building the customised version of Pardus. Repositories are based on different Pardus versions.</p>
+			<p class="description_title">Choose repository version</p>
+
+
+			<form name="step1_form">
+
+			{% for repo in repos.keys %}
+			<div id="radio_label_div"><label class="content_label_radio"> {{ repo }} </label></div>
+			<div id="radio_div"><input class="input_radio" type="radio" name="image_type" value={{ repo }} ></input> </div>
+			<br class="spacing" />
+			{% endfor %}
+
+
+			<br class="spacing" />
+			<br class="spacing" />
+
+			<p class="description"> Know the difference.. </p>
+			
+
+			</form>
+
+			<br class="spacing" />
+			<div id="nextprev">
+			<a href="#"><img src="images/back.png" /></a>
+			<a href="#"><img src="images/next.png" /></a>
+			</div>
+
+			</div>
+			
+
+
+</div>
+
+
+</div>
+<!-- end of right container -->
+
+
+</html>

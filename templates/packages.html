@@ -1,0 +1,73 @@
+<!-- Package Selection page -->
+
+<div id="page5">
+			<div id="step1_right">
+
+
+			<p class="description"> You can select the required components and packages from the dropdown widget for building the custom version of pardus </p>
+			<p class="description_title">Select required packages</p>
+
+			
+			<p class="description">Search <input id='search' size="10" type="text" style=" font-family:arial; border:1px solid black; font-size:10px" ><img id='search_button' style="color:transparent; cursor:pointer; position:relative; top:6px; " src="images/search.png" onclick="
+
+$('tr[class$=package]').hide();
+$('tr[class$=component]').hide();
+$('tr[class^='+$('#search').val()+']').show();"
+
+
+  />&nbsp; <a  style="cursor:pointer; position:relative;"  onclick="$('tr[class$=component]').show(); $('tr[class$=package]').hide(); $('.direction').attr({src:'images/down.png'});">Reset</a>  </p>
+			
+			<div id="package_div">
+
+			<table id="pkg_components">
+
+
+			{% for component,packages in package_map.items %}
+
+			<tr class="{{ component }}-component" >
+			<td>{{ component }}</td>
+			<td><input type="checkbox" onclick="$('.{{ component }}box').click();" ></td>
+			<td><img class="direction" onclick=" if($('[class$={{ component }}-package]').is(':visible')) {  $('[class$={{ component }}-package]').hide(); $(this).attr({src:'images/down.png'});}
+else { $('[class$={{ component }}-package]').show(); $(this).attr({src:'images/up.png'}); }" src="images/down.png"></td>
+			</tr>
+
+
+			<tr><td>
+			<div id="pkg_padding">
+			<table " style=" border-left:1px dashed black;" class='{{ component }}'   >
+			{% for pkg in packages %}
+				
+			
+			<tr style="display:none" class='{{ pkg }}-{{ component }}-package' >
+
+			<td><div id="pkgs" >{{ pkg }}</div></td>
+			<td><input class='{{ component }}box' type="checkbox"></td>
+
+			</tr>
+
+			{% endfor %}
+			</div>
+			</table>
+
+			</td>
+			<tr/>
+
+			{% endfor %}
+
+			</table>
+
+
+			</div>
+
+			<div id="nextprev">
+			<a href="#"><img onclick="load_step4();" src="images/back.png" /></a>
+			<a href="#"><img onclick="load_step6();" src="images/next.png" /></a>
+			</div>
+
+			</div>
+			
+
+
+
+</div>
+
