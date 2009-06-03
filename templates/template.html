@@ -5,10 +5,9 @@
 <meta name="Generator" content="Vim/7.2">
 <meta http-equiv="content-type" content="text/html; charset=UTF-8">
 <link rel="stylesheet" type="text/css" href="stylesheet.css" />
-<link rel="stylesheet" type="text/css" href="jquery.safari-checkbox.css" />
+<script type="text/javascript" src="js/jquery-nightly.js"></script>
+<script type="text/javascript" src="js/jquery_wallpaper.js"></script>
 
-<script type="text/javascript" src="js/jquery-1.3.1.js"></script>
-<script type="text/javascript" src="js/jquery.checkbox.min.js"></script>
 
 
 
@@ -149,9 +148,9 @@ function load_step1()
 	$("#statusline").text("Distrotype");
 	$("#left_container").load("ajax_pool #left #page1");
 
-	if($("#step1_right").length)
+	if($("#step_right").length)
 	{
-		$("#step1_right").show();
+		$("#step_right").show();
 		$("#loading").hide();
 	}
 	else
@@ -191,7 +190,7 @@ function load_step2()
 
 
 	$("#statusline").text("Distrotype > Repository");
-	$("#step1_right").hide() ;
+	$("#step_right").hide() ;
 	$("#page3").hide() ;	
 }	
 
@@ -215,10 +214,11 @@ function load_step3()
 			$("#lang_selector div").hover(function(){$(this).fadeOut(100);$(this).fadeIn(500);});
 			$("#lang_selector div").click(function()
 				{
-					$("#lang_selector div").removeClass("highlighted");
-					$("#lang_selector div").removeClass("clicked");
+					$(".lang").removeClass("highlighted");
+					$(".lang").removeClass("clicked");
 					$(this).addClass("highlighted");
 					$(this).addClass("clicked");
+				
 				});
 
 
@@ -295,10 +295,9 @@ function load_step5()
      				});  
 				});
 
-
+								
 								$("#loading").hide();
 
-				$('input:checkbox').checkbox({cls:'jquery-safari-checkbox'});
 });
 
 	}
@@ -308,6 +307,126 @@ function load_step5()
 	$("#page6").hide() ;
 	$("#page4").hide() ;	
 }
+
+
+
+
+function load_step6()
+{
+	$("#loading").show();
+	if($("#page6").length)
+	{
+		$("#page6").show();
+		$("#loading").hide();
+	}
+
+	else
+	{
+		
+
+		$("<div />").load("ajax_pool #page6", function() {
+							
+							
+
+							
+							$(this).appendTo('#right_container');
+
+							$('.wallpaper').click(function(){$(this).fadeOut(100);$(this).fadeIn(100);});
+
+
+
+							$(function() {		
+		
+	// initialize scrollable 
+	$("div.scrollable").scrollable({
+		size: 3,items:'.items',prev:'.prev',next:'.next'});	
+	
+});
+
+
+	
+								$("#loading").hide();
+
+});
+
+	}
+
+
+	$("#statusline").text("Distrotype > Repository > Languages > Upload > Packages > Wallpaper");
+
+	$("#page5").hide() ;
+	$("#page7").hide() ;	
+}
+
+
+
+function load_step7()
+{
+	$("#loading").show();
+	if($("#page7").length)
+	{
+		$("#page7").show();
+		$("#loading").hide();
+	}
+
+	else
+	{
+		
+
+		$("<div />").load("ajax_pool #page7", function() {
+							
+							
+						
+							$(this).appendTo('#right_container');
+
+	
+								$("#loading").hide();
+
+});
+
+	}
+
+
+	$("#statusline").text("Distrotype > Repository > Languages > Upload > Packages > Wallpaper > Media");
+
+	$("#page6").hide() ;
+	$("#page8").hide() ;	
+}
+
+
+function load_step8()
+{
+	$("#loading").show();
+	if($("#page8").length)
+	{
+		$("#page8").show();
+		$("#loading").hide();
+	}
+
+	else
+	{
+		
+
+		$("<div />").load("ajax_pool #page8", function() {
+							
+							
+						
+							$(this).appendTo('#right_container');
+
+	
+								$("#loading").hide();
+
+});
+
+	}
+
+
+	$("#statusline").text("Distrotype > Repository > Languages > Upload > Packages > Wallpaper > Media > Build");
+
+	$("#page7").hide() ;
+
+}
+
 
 
 // Language selection functions
@@ -327,7 +446,7 @@ function addtolangSelectList()
 	}
 
 		$('.clicked').appendTo('.selected_list')
-
+	
 }
 
 function addtolangList()
@@ -352,10 +471,14 @@ $("#loading").hide();
 });
 
 
+//To prevent browser stalling
+$(window).unbind('unload');
+
+
 /*
 $(function()
 {
-	load_step5();
+	load_step6();
 
 });
 */
@@ -455,24 +578,30 @@ $(function()
 	<div id="popup_close" onClick='$("#popup").hide();' ></div>
 	<div id="sign_up" >
 		<form id="signup_form">
-
-		<div id="label_div" ><label class="content_label">User Name </label></div>
-		<div id="input_div" ><input class="content_input" type="text" name="user" /></div>
-		<br class="spacing" />
-		<div id="label_div" ><label class="content_label">Email </label></div>
-		<div id="input_div" ><input class="content_input" type="email" name="email_id" /></div>
-		<br class="spacing" />
-		<div id="label_div" ><label class="content_label">Password </label></div>
-		<div id="input_div" ><input class="content_input" type="password" name="password1" /></div>
-		<br class="spacing" />
-		<div id="label_div" ><label class="content_label">Confirm  </label></div>
-		<div id="input_div" ><input class="content_input" type="password" name="password2" /></div>
-		<br />
+		<table>
+		<tr><td><label class="content_label">User Name </label></td><td>
+		<input class="content_input" type="text" name="user" /></td></tr>
+		<tr><td><label class="content_label">Email </label></td><td>
+		<input class="content_input" type="email" name="email_id" /></td></tr>
+		<tr><td><label class="content_label">Password </label></td><td>
+		<input class="content_input" type="password" name="password1" /></td></tr>
+		<tr><td><label class="content_label">Confirm  </label></td><td>
+		<input class="content_input" type="password" name="password2" /></td></tr>
+		</table>
 		</form>
-		<div style='text-align:right; padding-top:11px; width:280px'> 
+		<div style='text-align:right; padding-top:11px; width:250px'> 
 		<input type="submit" value="Sign up" class="submit" onClick="sign_up();" /> 
 		</div>
 			<p id='error_signup' style='margin-top:-8px;'></p>
+
+	</div>
+	<div id="confirmation" style="display:none; width:200px; padding-left:140px; font-size:12px; color:#ad3d14;" >
+		<p> Do you want to proceed with building the custom distro with currently made configuration ?. You cannot cancel the build process if you go forward. If you want to make changes, navigate to prevous steps.
+		</p/>
+	<div style='text-align:right; padding-top:11px; width:250px'> 
+		<input type="submit" value="Yes" class="submit" onClick="$('#popup').hide(); load_step8();" /> 
+		<input type="submit" value="No" class="submit" onClick="$('#popup').hide();" /> 
+		</div>
 
 	</div>
 

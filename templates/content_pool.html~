@@ -33,11 +33,12 @@
 
 <div id="page0">
 
+			<!-- start page -->
 			<div id="start_page_right">
 			<br class="spacing" /><br class="spacing" /><br class="spacing" /><br class="spacing" />
 			<p class="content_text"> Have you ever thought of a web service that creates a burnable custom version of GNU/Linux ? <br /> <br />Pardus Burn provides the ISO image of your custom Pardus. Just log in and enjoy the service. 		</p>
 			<br />
-			<form>
+			<form onsubmit="sign_in()";>
 
 			<table>
 			<tr><td ><label class="content_label">User Name </label></td>
@@ -46,7 +47,6 @@
 			<tr><td ><label class="content_label">Password </label></td>
 			<td><input class="content_input" type="password" name="password" /></td></tr>
 			</table>
-
 
 			<div id="content_links">
 
@@ -64,8 +64,8 @@
 
 <!-- Select distro type -->
 <div id="page1">
-			<div id="step1_right">
-
+			<div id="step_right">
+			<img src="images/steps/step1.png" />
 
 			<p class="description"> Select from the following whether you need to build and installation image or instead play Live image.</p>
 			<p class="description_title">Choose distro type</p>
@@ -109,7 +109,7 @@
 <!-- Repository Selection -->
 
 <div id="page2">
-			<div id="step1_right">
+			<div id="step_right">
 
 
 			<p class="description"> Select from the following whether which repository you would like to use for building the customised version of Pardus. <br />Repositories are based on different Pardus versions.</p>
@@ -145,33 +145,30 @@
 <!-- Language Selection -->
 
 <div id="page3">
-			<div id="step1_right">
+			<div id="step_right">
 
 
 			<p class="description"> Select from the following list, the required language support for the customised distro</p>
 			<p class="description_title">Select language(s)</p>
 
-			<div id="languages" >
-
 				<div id="lang_selector" class="list" >
-				<div id="lang">US English</div>
-				<div id="lang">Malayalam</div>
-				<div id="lang">Hindi</div>
-				<div id="lang">Tamil</div>
+				<div class="lang">US English</div>
+				<div class="lang">Malayalam</div>
+				<div class="lang">Hindi</div>
+				<div class="lang">Tamil</div>
 				</div>
 				<div id="lang_chooser">
 				<img onclick="addtolangSelectList();" src="images/lang_next.png">
 				<img onclick="addtolangList();" src="images/lang_back.png">
 				</div>
 				<div id="lang_selector" class="selected_list" > </div>
+				<p class="description" style="clear:both" >* Language in bold is the default one.</p>
 
-			</div>			
-
-			<br class="spacing" />
-			<div id="nextprev">
-			<a href="#"><img onclick="load_step2();" src="images/back.png" /></a>
+			<div id="nextprev" style="clear:both">
+			<a href="#"><img  onclick="load_step2();" src="images/back.png" /></a>
 			<a href="#"><img onclick="load_step4();" src="images/next.png" /></a>
 			</div>
+
 
 			</div>
 			
@@ -183,7 +180,7 @@
 <!-- Uploads page -->
 
 <div id="page4">
-			<div id="step1_right">
+			<div id="step_right">
 
 
 			<p class="description"> Upload the required RELEASE files to be appeared in the CD Rom / Image directory. <br> Also you can upload Home folder contents. Home folder contents should be uploaded either as zip, tar.gz, bz2. This step is optional. </p>
@@ -223,7 +220,7 @@
 <!-- Package Selection page -->
 
 <div id="page5">
-			<div id="step1_right">
+			<div id="step_right">
 
 
 			<p class="description"> You can select the required components and packages from the dropdown widget for building the custom version of pardus </p>
@@ -237,7 +234,7 @@ $('tr[class$=component]').hide();
 $('tr[class^='+$('#search').val()+']').show();"
 
 
-  />&nbsp; <a  style="cursor:pointer; position:relative;"  onclick="$('tr[class$=component]').show(); $('tr[class$=package]').hide(); $('#direction').attr({src:'images/down.png'});">Reset</a>  </p>
+  />&nbsp; <a  style="cursor:pointer; position:relative;"  onclick="$('tr[class$=component]').show(); $('tr[class$=package]').hide(); $('.direction').attr({src:'images/down.png'});">Reset</a>  </p>
 			
 			<div id="package_div">
 
@@ -249,7 +246,7 @@ $('tr[class^='+$('#search').val()+']').show();"
 			<tr class="{{ component }}-component" >
 			<td>{{ component }}</td>
 			<td><input type="checkbox" onclick="$('.{{ component }}box').click();" ></td>
-			<td><img id="direction" onclick=" if($('[class$={{ component }}-package]').is(':visible')) {  $('[class$={{ component }}-package]').hide(); $(this).attr({src:'images/down.png'});}
+			<td><img class="direction" onclick=" if($('[class$={{ component }}-package]').is(':visible')) {  $('[class$={{ component }}-package]').hide(); $(this).attr({src:'images/down.png'});}
 else { $('[class$={{ component }}-package]').show(); $(this).attr({src:'images/up.png'}); }" src="images/down.png"></td>
 			</tr>
 
@@ -294,8 +291,111 @@ else { $('[class$={{ component }}-package]').show(); $(this).attr({src:'images/u
 </div>
 
 
+<!-- Wallpaper Selection page -->
+
+<div id="page6">
+			<div id="step_right">
 
 
+			<p class="description"> You can select the default wallpaper for your custom version of the pardus live CD by clicking on the image. You can also upload a wallpaper that you would love and choose it </p>
+			<p class="description_title">Select the default wallpaper</p>
+
+			
+<div class="scrollable">
+
+	
+	<!-- root element for the items -->
+	<div class="items">
+		{% for wallpaper in wallpapers %}
+		<div class="wallpaper" style="float:left; "><img style="cursor:pointer;" src="{{ wallpaper }}" /></div>
+		{% endfor %}
+	</div>
+
+	
+</div>
+
+
+
+	<div class="prev" >&lt&lt prev</div><div class="next" >next &gt&gt</div>
+
+			</div>
+			<br class="spacing">
+			<br class="spacing">
+			
+			<table>
+			<tr><td><label class="content_label">Upload</label></td> 
+			<td><input class="content_input" type="text" name="username" /> </td> 
+			<td><a href="#"><img style="color:transparent"  src="images/button.png"></a></td></tr>
+			</table>
+			<br class="spacing">
+			<div id="nextprev">
+			<a href="#"><img onclick="load_step5();" src="images/back.png" /></a>
+			<a href="#"><img onclick="load_step7();" src="images/next.png" /></a>
+			</div>
+
+			</div>
+</div>
+
+<!-- Media Selection -->
+
+<div id="page7">
+			<div id="step_right">
+
+
+			<p class="description"> Select the media type for which you would like to build the custom version of Pardus</p>
+			<p class="description_title">Choose media type</p>
+
+
+			<form name="step1_form">
+
+			{% for name,medium in media.items %}
+			<div id="radio_label_div"><label class="content_label_radio"> {{ medium }} </label></div>
+			<div id="radio_div"><input class="input_radio" type="radio" name="image_type" value={{ name }} checked ></input> </div>
+			<br class="spacing" />
+			{% endfor %}
+
+		
+
+			</form>
+
+			<br class="spacing" />
+			<div id="nextprev">
+			<a href="#"><img onclick="load_step6();" src="images/back.png" /></a>
+			<a href="#"><img onclick="$('#signup_form').hide(); $('#signup_form').siblings().hide(); $('#confirmation').show(); $('#popup').show();" src="images/finish.png" /></a>
+			</div>
+
+			</div>
+			
+
+
+</div>
+
+
+<!-- Building -->
+
+<div id="page8">
+			<br class="spacing">
+			<img src="images/done_head.png">
+
+
+			<p class="description">Now it will build a custom version of Pardus based on the configurations you have given in the configuration wizard. Have fun !</p>
+			<br class="spacing"/>
+			<img width="150px" src="images/loading.gif">
+			<br class="spacing"/>
+			<p class="description">This will take approximately <b>1 hour(s)</b> of time for completion. You can leave this page and comeback after <b>1 hour(s)</b>  for downloading the image. <br class="spacing"/>
+Don't forget to inform us what you have felt about and new ideas and suggestion. Happy Hacking !</p>
+
+			
+			<br class="spacing" />
+			<div id="nextprev">
+			<a href="#"><img onclick="#" src="images/finish.png" /></a>
+			</div>
+
+			</div>
+			
+
+
+</div>
 
 
 </div>

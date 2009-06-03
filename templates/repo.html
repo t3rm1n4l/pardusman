@@ -1,9 +1,8 @@
 <!-- Package Selection page -->
 
-<div id="page5">
-			<div id="step1_right">
-
-
+<div id="page5" style="overflow:hidden" >
+			<div id="step_right">
+			<img src="images/steps/step5.png" />
 			<p class="description"> You can select the required components and packages from the dropdown widget for building the custom version of pardus </p>
 			<p class="description_title">Select required packages</p>
 
@@ -12,8 +11,9 @@
 
 $('tr[class$=container]').show();
 $('tr[class$=package]').hide();
+$('tr[class$=component]').hide(); 
 $('tr[class^='+$('#search').val()+']').show();
-$('tr[class$=component]').hide(); "
+"
 
   />&nbsp; <a  style="cursor:pointer; position:relative;"  onclick="$('tr[class$=component]').show(); $('[class$=container]').hide(); $('.direction').attr({src:'images/down.png'});">Reset</a>  </p>
 			
@@ -27,27 +27,6 @@ $('tr[class$=component]').hide(); "
 			<tr class="office-postscript-component" >
 			<td>office-postscript</td>
 			<td><input type="checkbox" onclick="$('.office-postscriptbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=office-postscript-package]').is(':visible'))
-{
-  $('[class$=office-postscript-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=office-postscript-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -128,27 +107,6 @@ src="images/down.png"></td>
 			<td>hardware-cpu</td>
 			<td><input type="checkbox" onclick="$('.hardware-cpubox').click();" ></td>
 
-<!--
-
-
-if($('[class$=hardware-cpu-package]').is(':visible'))
-{
-  $('[class$=hardware-cpu-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-cpu-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -218,27 +176,6 @@ src="images/down.png"></td>
 			<td>science-chemistry</td>
 			<td><input type="checkbox" onclick="$('.science-chemistrybox').click();" ></td>
 
-<!--
-
-
-if($('[class$=science-chemistry-package]').is(':visible'))
-{
-  $('[class$=science-chemistry-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=science-chemistry-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -287,27 +224,6 @@ src="images/down.png"></td>
 			<tr class="game-strategy-component" >
 			<td>game-strategy</td>
 			<td><input type="checkbox" onclick="$('.game-strategybox').click();" ></td>
-
-<!--
-
-
-if($('[class$=game-strategy-package]').is(':visible'))
-{
-  $('[class$=game-strategy-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=game-strategy-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -367,27 +283,6 @@ src="images/down.png"></td>
 			<tr class="kernel-default-drivers-component" >
 			<td>kernel-default-drivers</td>
 			<td><input type="checkbox" onclick="$('.kernel-default-driversbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=kernel-default-drivers-package]').is(':visible'))
-{
-  $('[class$=kernel-default-drivers-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=kernel-default-drivers-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -548,27 +443,6 @@ src="images/down.png"></td>
 			<td>hardware-scanner</td>
 			<td><input type="checkbox" onclick="$('.hardware-scannerbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=hardware-scanner-package]').is(':visible'))
-{
-  $('[class$=hardware-scanner-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-scanner-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -617,27 +491,6 @@ src="images/down.png"></td>
 			<tr class="programming-language-java-component" >
 			<td>programming-language-java</td>
 			<td><input type="checkbox" onclick="$('.programming-language-javabox').click();" ></td>
-
-<!--
-
-
-if($('[class$=programming-language-java-package]').is(':visible'))
-{
-  $('[class$=programming-language-java-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-language-java-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -808,27 +661,6 @@ src="images/down.png"></td>
 			<td>network-ftp</td>
 			<td><input type="checkbox" onclick="$('.network-ftpbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=network-ftp-package]').is(':visible'))
-{
-  $('[class$=network-ftp-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-ftp-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -897,27 +729,6 @@ src="images/down.png"></td>
 			<tr class="x11-misc-component" >
 			<td>x11-misc</td>
 			<td><input type="checkbox" onclick="$('.x11-miscbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=x11-misc-package]').is(':visible'))
-{
-  $('[class$=x11-misc-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=x11-misc-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -1057,27 +868,6 @@ src="images/down.png"></td>
 			<tr class="hardware-library-component" >
 			<td>hardware-library</td>
 			<td><input type="checkbox" onclick="$('.hardware-librarybox').click();" ></td>
-
-<!--
-
-
-if($('[class$=hardware-library-package]').is(':visible'))
-{
-  $('[class$=hardware-library-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-library-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -1288,27 +1078,6 @@ src="images/down.png"></td>
 			<td>applications-editors-emacs</td>
 			<td><input type="checkbox" onclick="$('.applications-editors-emacsbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=applications-editors-emacs-package]').is(':visible'))
-{
-  $('[class$=applications-editors-emacs-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=applications-editors-emacs-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -1378,27 +1147,6 @@ src="images/down.png"></td>
 			<td>programming-microcontroller</td>
 			<td><input type="checkbox" onclick="$('.programming-microcontrollerbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-microcontroller-package]').is(':visible'))
-{
-  $('[class$=programming-microcontroller-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-microcontroller-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -1447,27 +1195,6 @@ src="images/down.png"></td>
 			<tr class="office-docbook-component" >
 			<td>office-docbook</td>
 			<td><input type="checkbox" onclick="$('.office-docbookbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=office-docbook-package]').is(':visible'))
-{
-  $('[class$=office-docbook-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=office-docbook-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -1698,27 +1425,6 @@ src="images/down.png"></td>
 			<td>hardware-firmware</td>
 			<td><input type="checkbox" onclick="$('.hardware-firmwarebox').click();" ></td>
 
-<!--
-
-
-if($('[class$=hardware-firmware-package]').is(':visible'))
-{
-  $('[class$=hardware-firmware-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-firmware-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -1938,27 +1644,6 @@ src="images/down.png"></td>
 			<td>game-puzzle</td>
 			<td><input type="checkbox" onclick="$('.game-puzzlebox').click();" ></td>
 
-<!--
-
-
-if($('[class$=game-puzzle-package]').is(':visible'))
-{
-  $('[class$=game-puzzle-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=game-puzzle-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -2017,27 +1702,6 @@ src="images/down.png"></td>
 			<tr class="multimedia-library-component" >
 			<td>multimedia-library</td>
 			<td><input type="checkbox" onclick="$('.multimedia-librarybox').click();" ></td>
-
-<!--
-
-
-if($('[class$=multimedia-library-package]').is(':visible'))
-{
-  $('[class$=multimedia-library-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=multimedia-library-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -3098,27 +2762,6 @@ src="images/down.png"></td>
 			<td>programming-tool</td>
 			<td><input type="checkbox" onclick="$('.programming-toolbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-tool-package]').is(':visible'))
-{
-  $('[class$=programming-tool-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-tool-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -3228,27 +2871,6 @@ src="images/down.png"></td>
 			<td>server-mta</td>
 			<td><input type="checkbox" onclick="$('.server-mtabox').click();" ></td>
 
-<!--
-
-
-if($('[class$=server-mta-package]').is(':visible'))
-{
-  $('[class$=server-mta-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=server-mta-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -3318,27 +2940,6 @@ src="images/down.png"></td>
 			<td>server-www</td>
 			<td><input type="checkbox" onclick="$('.server-wwwbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=server-www-package]').is(':visible'))
-{
-  $('[class$=server-www-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=server-www-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -3407,27 +3008,6 @@ src="images/down.png"></td>
 			<tr class="office-tex-component" >
 			<td>office-tex</td>
 			<td><input type="checkbox" onclick="$('.office-texbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=office-tex-package]').is(':visible'))
-{
-  $('[class$=office-tex-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=office-tex-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -3597,27 +3177,6 @@ src="images/down.png"></td>
 			<tr class="system-devel-component" >
 			<td>system-devel</td>
 			<td><input type="checkbox" onclick="$('.system-develbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=system-devel-package]').is(':visible'))
-{
-  $('[class$=system-devel-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=system-devel-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -4018,27 +3577,6 @@ src="images/down.png"></td>
 			<td>util-admin</td>
 			<td><input type="checkbox" onclick="$('.util-adminbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=util-admin-package]').is(':visible'))
-{
-  $('[class$=util-admin-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=util-admin-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -4117,27 +3655,6 @@ src="images/down.png"></td>
 			<tr class="desktop-toolkit-qt-component" >
 			<td>desktop-toolkit-qt</td>
 			<td><input type="checkbox" onclick="$('.desktop-toolkit-qtbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=desktop-toolkit-qt-package]').is(':visible'))
-{
-  $('[class$=desktop-toolkit-qt-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=desktop-toolkit-qt-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -4338,27 +3855,6 @@ src="images/down.png"></td>
 			<td>applications-network</td>
 			<td><input type="checkbox" onclick="$('.applications-networkbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=applications-network-package]').is(':visible'))
-{
-  $('[class$=applications-network-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=applications-network-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -4417,27 +3913,6 @@ src="images/down.png"></td>
 			<tr class="hardware-powermanagement-component" >
 			<td>hardware-powermanagement</td>
 			<td><input type="checkbox" onclick="$('.hardware-powermanagementbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=hardware-powermanagement-package]').is(':visible'))
-{
-  $('[class$=hardware-powermanagement-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-powermanagement-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -4557,27 +4032,6 @@ src="images/down.png"></td>
 			<tr class="science-library-component" >
 			<td>science-library</td>
 			<td><input type="checkbox" onclick="$('.science-librarybox').click();" ></td>
-
-<!--
-
-
-if($('[class$=science-library-package]').is(':visible'))
-{
-  $('[class$=science-library-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=science-library-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -4758,27 +4212,6 @@ src="images/down.png"></td>
 			<td>x11-server</td>
 			<td><input type="checkbox" onclick="$('.x11-serverbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=x11-server-package]').is(':visible'))
-{
-  $('[class$=x11-server-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=x11-server-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -4878,27 +4311,6 @@ src="images/down.png"></td>
 			<td>programming-build</td>
 			<td><input type="checkbox" onclick="$('.programming-buildbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-build-package]').is(':visible'))
-{
-  $('[class$=programming-build-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-build-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -4987,27 +4399,6 @@ src="images/down.png"></td>
 			<tr class="server-component" >
 			<td>server</td>
 			<td><input type="checkbox" onclick="$('.serverbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=server-package]').is(':visible'))
-{
-  $('[class$=server-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=server-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -5108,27 +4499,6 @@ src="images/down.png"></td>
 			<td>programming-environment</td>
 			<td><input type="checkbox" onclick="$('.programming-environmentbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-environment-package]').is(':visible'))
-{
-  $('[class$=programming-environment-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-environment-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -5177,27 +4547,6 @@ src="images/down.png"></td>
 			<tr class="server-web-component" >
 			<td>server-web</td>
 			<td><input type="checkbox" onclick="$('.server-webbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=server-web-package]').is(':visible'))
-{
-  $('[class$=server-web-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=server-web-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -5257,27 +4606,6 @@ src="images/down.png"></td>
 			<tr class="hardware-bluetooth-component" >
 			<td>hardware-bluetooth</td>
 			<td><input type="checkbox" onclick="$('.hardware-bluetoothbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=hardware-bluetooth-package]').is(':visible'))
-{
-  $('[class$=hardware-bluetooth-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-bluetooth-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -5348,27 +4676,6 @@ src="images/down.png"></td>
 			<td>hardware-graphics</td>
 			<td><input type="checkbox" onclick="$('.hardware-graphicsbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=hardware-graphics-package]').is(':visible'))
-{
-  $('[class$=hardware-graphics-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-graphics-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -5438,27 +4745,6 @@ src="images/down.png"></td>
 			<td>editor-emacs</td>
 			<td><input type="checkbox" onclick="$('.editor-emacsbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=editor-emacs-package]').is(':visible'))
-{
-  $('[class$=editor-emacs-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=editor-emacs-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -5517,27 +4803,6 @@ src="images/down.png"></td>
 			<tr class="network-mail-component" >
 			<td>network-mail</td>
 			<td><input type="checkbox" onclick="$('.network-mailbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=network-mail-package]').is(':visible'))
-{
-  $('[class$=network-mail-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-mail-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -5607,27 +4872,6 @@ src="images/down.png"></td>
 			<tr class="hardware-misc-component" >
 			<td>hardware-misc</td>
 			<td><input type="checkbox" onclick="$('.hardware-miscbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=hardware-misc-package]').is(':visible'))
-{
-  $('[class$=hardware-misc-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-misc-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -5718,27 +4962,6 @@ src="images/down.png"></td>
 			<td>server-library</td>
 			<td><input type="checkbox" onclick="$('.server-librarybox').click();" ></td>
 
-<!--
-
-
-if($('[class$=server-library-package]').is(':visible'))
-{
-  $('[class$=server-library-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=server-library-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -5797,27 +5020,6 @@ src="images/down.png"></td>
 			<tr class="editor-vi-component" >
 			<td>editor-vi</td>
 			<td><input type="checkbox" onclick="$('.editor-vibox').click();" ></td>
-
-<!--
-
-
-if($('[class$=editor-vi-package]').is(':visible'))
-{
-  $('[class$=editor-vi-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=editor-vi-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -5888,27 +5090,6 @@ src="images/down.png"></td>
 			<td>hardware-irda</td>
 			<td><input type="checkbox" onclick="$('.hardware-irdabox').click();" ></td>
 
-<!--
-
-
-if($('[class$=hardware-irda-package]').is(':visible'))
-{
-  $('[class$=hardware-irda-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-irda-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -5967,27 +5148,6 @@ src="images/down.png"></td>
 			<tr class="network-monitor-component" >
 			<td>network-monitor</td>
 			<td><input type="checkbox" onclick="$('.network-monitorbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=network-monitor-package]').is(':visible'))
-{
-  $('[class$=network-monitor-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-monitor-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -6067,27 +5227,6 @@ src="images/down.png"></td>
 			<tr class="x11-driver-component" >
 			<td>x11-driver</td>
 			<td><input type="checkbox" onclick="$('.x11-driverbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=x11-driver-package]').is(':visible'))
-{
-  $('[class$=x11-driver-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=x11-driver-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -6648,27 +5787,6 @@ src="images/down.png"></td>
 			<td>game-library</td>
 			<td><input type="checkbox" onclick="$('.game-librarybox').click();" ></td>
 
-<!--
-
-
-if($('[class$=game-library-package]').is(':visible'))
-{
-  $('[class$=game-library-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=game-library-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -6727,27 +5845,6 @@ src="images/down.png"></td>
 			<tr class="programming-language-perl-component" >
 			<td>programming-language-perl</td>
 			<td><input type="checkbox" onclick="$('.programming-language-perlbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=programming-language-perl-package]').is(':visible'))
-{
-  $('[class$=programming-language-perl-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-language-perl-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -7068,27 +6165,6 @@ src="images/down.png"></td>
 			<td>network-p2p</td>
 			<td><input type="checkbox" onclick="$('.network-p2pbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=network-p2p-package]').is(':visible'))
-{
-  $('[class$=network-p2p-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-p2p-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -7137,27 +6213,6 @@ src="images/down.png"></td>
 			<tr class="desktop-toolkit-gtk-component" >
 			<td>desktop-toolkit-gtk</td>
 			<td><input type="checkbox" onclick="$('.desktop-toolkit-gtkbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=desktop-toolkit-gtk-package]').is(':visible'))
-{
-  $('[class$=desktop-toolkit-gtk-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=desktop-toolkit-gtk-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -7347,27 +6402,6 @@ src="images/down.png"></td>
 			<tr class="network-library-component" >
 			<td>network-library</td>
 			<td><input type="checkbox" onclick="$('.network-librarybox').click();" ></td>
-
-<!--
-
-
-if($('[class$=network-library-package]').is(':visible'))
-{
-  $('[class$=network-library-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-library-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -7688,27 +6722,6 @@ src="images/down.png"></td>
 			<td>science-mathematics</td>
 			<td><input type="checkbox" onclick="$('.science-mathematicsbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=science-mathematics-package]').is(':visible'))
-{
-  $('[class$=science-mathematics-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=science-mathematics-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -7777,27 +6790,6 @@ src="images/down.png"></td>
 			<tr class="network-connection-component" >
 			<td>network-connection</td>
 			<td><input type="checkbox" onclick="$('.network-connectionbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=network-connection-package]').is(':visible'))
-{
-  $('[class$=network-connection-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-connection-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -7878,27 +6870,6 @@ src="images/down.png"></td>
 			<td>desktop-toolkit-motif</td>
 			<td><input type="checkbox" onclick="$('.desktop-toolkit-motifbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=desktop-toolkit-motif-package]').is(':visible'))
-{
-  $('[class$=desktop-toolkit-motif-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=desktop-toolkit-motif-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -7947,27 +6918,6 @@ src="images/down.png"></td>
 			<tr class="science-robotics-component" >
 			<td>science-robotics</td>
 			<td><input type="checkbox" onclick="$('.science-roboticsbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=science-robotics-package]').is(':visible'))
-{
-  $('[class$=science-robotics-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=science-robotics-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -8027,27 +6977,6 @@ src="images/down.png"></td>
 			<tr class="desktop-gnome-component" >
 			<td>desktop-gnome</td>
 			<td><input type="checkbox" onclick="$('.desktop-gnomebox').click();" ></td>
-
-<!--
-
-
-if($('[class$=desktop-gnome-package]').is(':visible'))
-{
-  $('[class$=desktop-gnome-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=desktop-gnome-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -8168,27 +7097,6 @@ src="images/down.png"></td>
 			<td>programming-languages-perl</td>
 			<td><input type="checkbox" onclick="$('.programming-languages-perlbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-languages-perl-package]').is(':visible'))
-{
-  $('[class$=programming-languages-perl-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-languages-perl-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -8237,27 +7145,6 @@ src="images/down.png"></td>
 			<tr class="hardware-info-component" >
 			<td>hardware-info</td>
 			<td><input type="checkbox" onclick="$('.hardware-infobox').click();" ></td>
-
-<!--
-
-
-if($('[class$=hardware-info-package]').is(':visible'))
-{
-  $('[class$=hardware-info-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-info-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -8348,27 +7235,6 @@ src="images/down.png"></td>
 			<td>multimedia-stream</td>
 			<td><input type="checkbox" onclick="$('.multimedia-streambox').click();" ></td>
 
-<!--
-
-
-if($('[class$=multimedia-stream-package]').is(':visible'))
-{
-  $('[class$=multimedia-stream-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=multimedia-stream-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -8427,27 +7293,6 @@ src="images/down.png"></td>
 			<tr class="util-crypt-component" >
 			<td>util-crypt</td>
 			<td><input type="checkbox" onclick="$('.util-cryptbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=util-crypt-package]').is(':visible'))
-{
-  $('[class$=util-crypt-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=util-crypt-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -8548,27 +7393,6 @@ src="images/down.png"></td>
 			<td>network-filter</td>
 			<td><input type="checkbox" onclick="$('.network-filterbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=network-filter-package]').is(':visible'))
-{
-  $('[class$=network-filter-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-filter-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -8637,27 +7461,6 @@ src="images/down.png"></td>
 			<tr class="multimedia-video-component" >
 			<td>multimedia-video</td>
 			<td><input type="checkbox" onclick="$('.multimedia-videobox').click();" ></td>
-
-<!--
-
-
-if($('[class$=multimedia-video-package]').is(':visible'))
-{
-  $('[class$=multimedia-video-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=multimedia-video-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -8777,27 +7580,6 @@ src="images/down.png"></td>
 			<tr class="programming-library-component" >
 			<td>programming-library</td>
 			<td><input type="checkbox" onclick="$('.programming-librarybox').click();" ></td>
-
-<!--
-
-
-if($('[class$=programming-library-package]').is(':visible'))
-{
-  $('[class$=programming-library-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-library-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -9508,27 +8290,6 @@ src="images/down.png"></td>
 			<td>util-misc</td>
 			<td><input type="checkbox" onclick="$('.util-miscbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=util-misc-package]').is(':visible'))
-{
-  $('[class$=util-misc-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=util-misc-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -9717,27 +8478,6 @@ src="images/down.png"></td>
 			<tr class="hardware-printer-component" >
 			<td>hardware-printer</td>
 			<td><input type="checkbox" onclick="$('.hardware-printerbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=hardware-printer-package]').is(':visible'))
-{
-  $('[class$=hardware-printer-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-printer-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -9948,27 +8688,6 @@ src="images/down.png"></td>
 			<td>desktop-toolkit-qwt</td>
 			<td><input type="checkbox" onclick="$('.desktop-toolkit-qwtbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=desktop-toolkit-qwt-package]').is(':visible'))
-{
-  $('[class$=desktop-toolkit-qwt-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=desktop-toolkit-qwt-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -10027,27 +8746,6 @@ src="images/down.png"></td>
 			<tr class="desktop-font-component" >
 			<td>desktop-font</td>
 			<td><input type="checkbox" onclick="$('.desktop-fontbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=desktop-font-package]').is(':visible'))
-{
-  $('[class$=desktop-font-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=desktop-font-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -10298,27 +8996,6 @@ src="images/down.png"></td>
 			<td>server-auth</td>
 			<td><input type="checkbox" onclick="$('.server-authbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=server-auth-package]').is(':visible'))
-{
-  $('[class$=server-auth-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=server-auth-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -10367,27 +9044,6 @@ src="images/down.png"></td>
 			<tr class="network-analyzer-component" >
 			<td>network-analyzer</td>
 			<td><input type="checkbox" onclick="$('.network-analyzerbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=network-analyzer-package]').is(':visible'))
-{
-  $('[class$=network-analyzer-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-analyzer-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -10477,27 +9133,6 @@ src="images/down.png"></td>
 			<tr class="hardware-optical-component" >
 			<td>hardware-optical</td>
 			<td><input type="checkbox" onclick="$('.hardware-opticalbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=hardware-optical-package]').is(':visible'))
-{
-  $('[class$=hardware-optical-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-optical-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -10608,27 +9243,6 @@ src="images/down.png"></td>
 			<td>programming-debug</td>
 			<td><input type="checkbox" onclick="$('.programming-debugbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-debug-package]').is(':visible'))
-{
-  $('[class$=programming-debug-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-debug-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -10697,27 +9311,6 @@ src="images/down.png"></td>
 			<tr class="game-action-component" >
 			<td>game-action</td>
 			<td><input type="checkbox" onclick="$('.game-actionbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=game-action-package]').is(':visible'))
-{
-  $('[class$=game-action-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=game-action-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -10798,27 +9391,6 @@ src="images/down.png"></td>
 			<td>system-boot</td>
 			<td><input type="checkbox" onclick="$('.system-bootbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=system-boot-package]').is(':visible'))
-{
-  $('[class$=system-boot-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=system-boot-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -10897,27 +9469,6 @@ src="images/down.png"></td>
 			<tr class="multimedia-sound-component" >
 			<td>multimedia-sound</td>
 			<td><input type="checkbox" onclick="$('.multimedia-soundbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=multimedia-sound-package]').is(':visible'))
-{
-  $('[class$=multimedia-sound-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=multimedia-sound-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -11248,27 +9799,6 @@ src="images/down.png"></td>
 			<td>x11-util</td>
 			<td><input type="checkbox" onclick="$('.x11-utilbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=x11-util-package]').is(':visible'))
-{
-  $('[class$=x11-util-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=x11-util-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -11358,27 +9888,6 @@ src="images/down.png"></td>
 			<td>programming-language-php</td>
 			<td><input type="checkbox" onclick="$('.programming-language-phpbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-language-php-package]').is(':visible'))
-{
-  $('[class$=programming-language-php-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-language-php-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -11448,27 +9957,6 @@ src="images/down.png"></td>
 			<td>network-fax</td>
 			<td><input type="checkbox" onclick="$('.network-faxbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=network-fax-package]').is(':visible'))
-{
-  $('[class$=network-fax-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-fax-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -11517,27 +10005,6 @@ src="images/down.png"></td>
 			<tr class="server-database-component" >
 			<td>server-database</td>
 			<td><input type="checkbox" onclick="$('.server-databasebox').click();" ></td>
-
-<!--
-
-
-if($('[class$=server-database-package]').is(':visible'))
-{
-  $('[class$=server-database-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=server-database-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -11687,27 +10154,6 @@ src="images/down.png"></td>
 			<tr class="desktop-kde-base-component" >
 			<td>desktop-kde-base</td>
 			<td><input type="checkbox" onclick="$('.desktop-kde-basebox').click();" ></td>
-
-<!--
-
-
-if($('[class$=desktop-kde-base-package]').is(':visible'))
-{
-  $('[class$=desktop-kde-base-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=desktop-kde-base-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -12118,27 +10564,6 @@ src="images/down.png"></td>
 			<td>editor</td>
 			<td><input type="checkbox" onclick="$('.editorbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=editor-package]').is(':visible'))
-{
-  $('[class$=editor-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=editor-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -12188,27 +10613,6 @@ src="images/down.png"></td>
 			<td>multimedia-editor</td>
 			<td><input type="checkbox" onclick="$('.multimedia-editorbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=multimedia-editor-package]').is(':visible'))
-{
-  $('[class$=multimedia-editor-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=multimedia-editor-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -12257,27 +10661,6 @@ src="images/down.png"></td>
 			<tr class="hardware-mobile-component" >
 			<td>hardware-mobile</td>
 			<td><input type="checkbox" onclick="$('.hardware-mobilebox').click();" ></td>
-
-<!--
-
-
-if($('[class$=hardware-mobile-package]').is(':visible'))
-{
-  $('[class$=hardware-mobile-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-mobile-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -12338,27 +10721,6 @@ src="images/down.png"></td>
 			<td>network-plugin</td>
 			<td><input type="checkbox" onclick="$('.network-pluginbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=network-plugin-package]').is(':visible'))
-{
-  $('[class$=network-plugin-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-plugin-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -12418,27 +10780,6 @@ src="images/down.png"></td>
 			<td>programming-language-lisp</td>
 			<td><input type="checkbox" onclick="$('.programming-language-lispbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-language-lisp-package]').is(':visible'))
-{
-  $('[class$=programming-language-lisp-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-language-lisp-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -12497,27 +10838,6 @@ src="images/down.png"></td>
 			<tr class="util-archive-component" >
 			<td>util-archive</td>
 			<td><input type="checkbox" onclick="$('.util-archivebox').click();" ></td>
-
-<!--
-
-
-if($('[class$=util-archive-package]').is(':visible'))
-{
-  $('[class$=util-archive-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=util-archive-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -12658,27 +10978,6 @@ src="images/down.png"></td>
 			<td>desktop-kde-admin</td>
 			<td><input type="checkbox" onclick="$('.desktop-kde-adminbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=desktop-kde-admin-package]').is(':visible'))
-{
-  $('[class$=desktop-kde-admin-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=desktop-kde-admin-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -12737,27 +11036,6 @@ src="images/down.png"></td>
 			<tr class="desktop-kde-addon-component" >
 			<td>desktop-kde-addon</td>
 			<td><input type="checkbox" onclick="$('.desktop-kde-addonbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=desktop-kde-addon-package]').is(':visible'))
-{
-  $('[class$=desktop-kde-addon-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=desktop-kde-addon-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -12877,27 +11155,6 @@ src="images/down.png"></td>
 			<tr class="system-locale-component" >
 			<td>system-locale</td>
 			<td><input type="checkbox" onclick="$('.system-localebox').click();" ></td>
-
-<!--
-
-
-if($('[class$=system-locale-package]').is(':visible'))
-{
-  $('[class$=system-locale-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=system-locale-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -14288,27 +12545,6 @@ src="images/down.png"></td>
 			<td>multimedia-tv</td>
 			<td><input type="checkbox" onclick="$('.multimedia-tvbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=multimedia-tv-package]').is(':visible'))
-{
-  $('[class$=multimedia-tv-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=multimedia-tv-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -14367,27 +12603,6 @@ src="images/down.png"></td>
 			<tr class="office-dictionary-component" >
 			<td>office-dictionary</td>
 			<td><input type="checkbox" onclick="$('.office-dictionarybox').click();" ></td>
-
-<!--
-
-
-if($('[class$=office-dictionary-package]').is(':visible'))
-{
-  $('[class$=office-dictionary-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=office-dictionary-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -14547,27 +12762,6 @@ src="images/down.png"></td>
 			<tr class="hardware-disk-component" >
 			<td>hardware-disk</td>
 			<td><input type="checkbox" onclick="$('.hardware-diskbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=hardware-disk-package]').is(':visible'))
-{
-  $('[class$=hardware-disk-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-disk-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -14818,27 +13012,6 @@ src="images/down.png"></td>
 			<td>system-installer</td>
 			<td><input type="checkbox" onclick="$('.system-installerbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=system-installer-package]').is(':visible'))
-{
-  $('[class$=system-installer-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=system-installer-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -14887,27 +13060,6 @@ src="images/down.png"></td>
 			<tr class="applications-hardware-component" >
 			<td>applications-hardware</td>
 			<td><input type="checkbox" onclick="$('.applications-hardwarebox').click();" ></td>
-
-<!--
-
-
-if($('[class$=applications-hardware-package]').is(':visible'))
-{
-  $('[class$=applications-hardware-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=applications-hardware-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -14978,27 +13130,6 @@ src="images/down.png"></td>
 			<td>programming-language-ruby</td>
 			<td><input type="checkbox" onclick="$('.programming-language-rubybox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-language-ruby-package]').is(':visible'))
-{
-  $('[class$=programming-language-ruby-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-language-ruby-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -15047,27 +13178,6 @@ src="images/down.png"></td>
 			<tr class="programming-vcs-component" >
 			<td>programming-vcs</td>
 			<td><input type="checkbox" onclick="$('.programming-vcsbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=programming-vcs-package]').is(':visible'))
-{
-  $('[class$=programming-vcs-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-vcs-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -15168,27 +13278,6 @@ src="images/down.png"></td>
 			<td>programming-language-tcl</td>
 			<td><input type="checkbox" onclick="$('.programming-language-tclbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-language-tcl-package]').is(':visible'))
-{
-  $('[class$=programming-language-tcl-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-language-tcl-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -15278,27 +13367,6 @@ src="images/down.png"></td>
 			<td>network-download</td>
 			<td><input type="checkbox" onclick="$('.network-downloadbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=network-download-package]').is(':visible'))
-{
-  $('[class$=network-download-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-download-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -15358,27 +13426,6 @@ src="images/down.png"></td>
 			<td>hardware-virtualization</td>
 			<td><input type="checkbox" onclick="$('.hardware-virtualizationbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=hardware-virtualization-package]').is(':visible'))
-{
-  $('[class$=hardware-virtualization-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-virtualization-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -15428,27 +13475,6 @@ src="images/down.png"></td>
 			<td>programming-environments</td>
 			<td><input type="checkbox" onclick="$('.programming-environmentsbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-environments-package]').is(':visible'))
-{
-  $('[class$=programming-environments-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-environments-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -15497,27 +13523,6 @@ src="images/down.png"></td>
 			<tr class="system-doc-component" >
 			<td>system-doc</td>
 			<td><input type="checkbox" onclick="$('.system-docbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=system-doc-package]').is(':visible'))
-{
-  $('[class$=system-doc-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=system-doc-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -15607,27 +13612,6 @@ src="images/down.png"></td>
 			<tr class="office-misc-component" >
 			<td>office-misc</td>
 			<td><input type="checkbox" onclick="$('.office-miscbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=office-misc-package]').is(':visible'))
-{
-  $('[class$=office-misc-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=office-misc-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -15767,27 +13751,6 @@ src="images/down.png"></td>
 			<tr class="programming-language-python-component" >
 			<td>programming-language-python</td>
 			<td><input type="checkbox" onclick="$('.programming-language-pythonbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=programming-language-python-package]').is(':visible'))
-{
-  $('[class$=programming-language-python-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-language-python-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -16428,27 +14391,6 @@ src="images/down.png"></td>
 			<td>hardware</td>
 			<td><input type="checkbox" onclick="$('.hardwarebox').click();" ></td>
 
-<!--
-
-
-if($('[class$=hardware-package]').is(':visible'))
-{
-  $('[class$=hardware-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -16498,27 +14440,6 @@ src="images/down.png"></td>
 			<td>hardware-emulator</td>
 			<td><input type="checkbox" onclick="$('.hardware-emulatorbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=hardware-emulator-package]').is(':visible'))
-{
-  $('[class$=hardware-emulator-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-emulator-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -16567,27 +14488,6 @@ src="images/down.png"></td>
 			<tr class="network-web-component" >
 			<td>network-web</td>
 			<td><input type="checkbox" onclick="$('.network-webbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=network-web-package]').is(':visible'))
-{
-  $('[class$=network-web-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-web-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -16668,27 +14568,6 @@ src="images/down.png"></td>
 			<td>network-share</td>
 			<td><input type="checkbox" onclick="$('.network-sharebox').click();" ></td>
 
-<!--
-
-
-if($('[class$=network-share-package]').is(':visible'))
-{
-  $('[class$=network-share-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-share-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -16757,27 +14636,6 @@ src="images/down.png"></td>
 			<tr class="multimedia-converter-component" >
 			<td>multimedia-converter</td>
 			<td><input type="checkbox" onclick="$('.multimedia-converterbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=multimedia-converter-package]').is(':visible'))
-{
-  $('[class$=multimedia-converter-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=multimedia-converter-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -16968,27 +14826,6 @@ src="images/down.png"></td>
 			<td>office-spellcheck</td>
 			<td><input type="checkbox" onclick="$('.office-spellcheckbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=office-spellcheck-package]').is(':visible'))
-{
-  $('[class$=office-spellcheck-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=office-spellcheck-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -17138,27 +14975,6 @@ src="images/down.png"></td>
 			<td>kernel-default</td>
 			<td><input type="checkbox" onclick="$('.kernel-defaultbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=kernel-default-package]').is(':visible'))
-{
-  $('[class$=kernel-default-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=kernel-default-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -17237,27 +15053,6 @@ src="images/down.png"></td>
 			<tr class="desktop-lookandfeel-component" >
 			<td>desktop-lookandfeel</td>
 			<td><input type="checkbox" onclick="$('.desktop-lookandfeelbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=desktop-lookandfeel-package]').is(':visible'))
-{
-  $('[class$=desktop-lookandfeel-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=desktop-lookandfeel-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -17428,27 +15223,6 @@ src="images/down.png"></td>
 			<td>programming-language</td>
 			<td><input type="checkbox" onclick="$('.programming-languagebox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-language-package]').is(':visible'))
-{
-  $('[class$=programming-language-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-language-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -17528,27 +15302,6 @@ src="images/down.png"></td>
 			<td>x11-terminal</td>
 			<td><input type="checkbox" onclick="$('.x11-terminalbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=x11-terminal-package]').is(':visible'))
-{
-  $('[class$=x11-terminal-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=x11-terminal-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -17607,27 +15360,6 @@ src="images/down.png"></td>
 			<tr class="desktop-toolkit-component" >
 			<td>desktop-toolkit</td>
 			<td><input type="checkbox" onclick="$('.desktop-toolkitbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=desktop-toolkit-package]').is(':visible'))
-{
-  $('[class$=desktop-toolkit-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=desktop-toolkit-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -17708,27 +15440,6 @@ src="images/down.png"></td>
 			<td>hardware-smartcard</td>
 			<td><input type="checkbox" onclick="$('.hardware-smartcardbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=hardware-smartcard-package]').is(':visible'))
-{
-  $('[class$=hardware-smartcard-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-smartcard-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -17777,27 +15488,6 @@ src="images/down.png"></td>
 			<tr class="network-remoteshell-component" >
 			<td>network-remoteshell</td>
 			<td><input type="checkbox" onclick="$('.network-remoteshellbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=network-remoteshell-package]').is(':visible'))
-{
-  $('[class$=network-remoteshell-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-remoteshell-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -17887,27 +15577,6 @@ src="images/down.png"></td>
 			<tr class="multimedia-graphics-component" >
 			<td>multimedia-graphics</td>
 			<td><input type="checkbox" onclick="$('.multimedia-graphicsbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=multimedia-graphics-package]').is(':visible'))
-{
-  $('[class$=multimedia-graphics-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=multimedia-graphics-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -18758,27 +16427,6 @@ src="images/down.png"></td>
 			<td>x11-library</td>
 			<td><input type="checkbox" onclick="$('.x11-librarybox').click();" ></td>
 
-<!--
-
-
-if($('[class$=x11-library-package]').is(':visible'))
-{
-  $('[class$=x11-library-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=x11-library-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -19168,27 +16816,6 @@ src="images/down.png"></td>
 			<td>hardware-sound</td>
 			<td><input type="checkbox" onclick="$('.hardware-soundbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=hardware-sound-package]').is(':visible'))
-{
-  $('[class$=hardware-sound-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=hardware-sound-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -19288,27 +16915,6 @@ src="images/down.png"></td>
 			<td>programming-language-dotnet</td>
 			<td><input type="checkbox" onclick="$('.programming-language-dotnetbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-language-dotnet-package]').is(':visible'))
-{
-  $('[class$=programming-language-dotnet-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-language-dotnet-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -19388,27 +16994,6 @@ src="images/down.png"></td>
 			<td>office-library</td>
 			<td><input type="checkbox" onclick="$('.office-librarybox').click();" ></td>
 
-<!--
-
-
-if($('[class$=office-library-package]').is(':visible'))
-{
-  $('[class$=office-library-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=office-library-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -19477,27 +17062,6 @@ src="images/down.png"></td>
 			<tr class="desktop-kde-l10n-component" >
 			<td>desktop-kde-l10n</td>
 			<td><input type="checkbox" onclick="$('.desktop-kde-l10nbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=desktop-kde-l10n-package]').is(':visible'))
-{
-  $('[class$=desktop-kde-l10n-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=desktop-kde-l10n-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -20158,27 +17722,6 @@ src="images/down.png"></td>
 			<td>util-shell</td>
 			<td><input type="checkbox" onclick="$('.util-shellbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=util-shell-package]').is(':visible'))
-{
-  $('[class$=util-shell-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=util-shell-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -20247,27 +17790,6 @@ src="images/down.png"></td>
 			<tr class="desktop-misc-component" >
 			<td>desktop-misc</td>
 			<td><input type="checkbox" onclick="$('.desktop-miscbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=desktop-misc-package]').is(':visible'))
-{
-  $('[class$=desktop-misc-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=desktop-misc-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -20408,27 +17930,6 @@ src="images/down.png"></td>
 			<td>programming-libs</td>
 			<td><input type="checkbox" onclick="$('.programming-libsbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=programming-libs-package]').is(':visible'))
-{
-  $('[class$=programming-libs-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=programming-libs-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -20477,27 +17978,6 @@ src="images/down.png"></td>
 			<tr class="multimedia-plugin-component" >
 			<td>multimedia-plugin</td>
 			<td><input type="checkbox" onclick="$('.multimedia-pluginbox').click();" ></td>
-
-<!--
-
-
-if($('[class$=multimedia-plugin-package]').is(':visible'))
-{
-  $('[class$=multimedia-plugin-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=multimedia-plugin-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -20557,27 +18037,6 @@ src="images/down.png"></td>
 			<tr class="game-arcade-component" >
 			<td>game-arcade</td>
 			<td><input type="checkbox" onclick="$('.game-arcadebox').click();" ></td>
-
-<!--
-
-
-if($('[class$=game-arcade-package]').is(':visible'))
-{
-  $('[class$=game-arcade-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=game-arcade-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -20707,27 +18166,6 @@ src="images/down.png"></td>
 			<tr class="system-base-component" >
 			<td>system-base</td>
 			<td><input type="checkbox" onclick="$('.system-basebox').click();" ></td>
-
-<!--
-
-
-if($('[class$=system-base-package]').is(':visible'))
-{
-  $('[class$=system-base-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=system-base-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
 
 
 
@@ -21988,27 +19426,6 @@ src="images/down.png"></td>
 			<td>network-chat</td>
 			<td><input type="checkbox" onclick="$('.network-chatbox').click();" ></td>
 
-<!--
-
-
-if($('[class$=network-chat-package]').is(':visible'))
-{
-  $('[class$=network-chat-package]').hide(); 
-  $(this).attr({src:'images/down.png'});
-
-}
-else 
-{ 
-  $('[class$=network-chat-package]').show();
-  $(this).attr({src:'images/up.png'}); 
-}" 
-
-src="images/down.png"></td>
-			</tr>
-
-
--->
-
 
 
 			<td><img class="direction" onclick=" 
@@ -22138,6 +19555,7 @@ src="images/down.png"></td>
 
 
 			</div>
+			<br class="spacing" />
 
 			<div id="nextprev">
 			<a href="#"><img onclick="load_step4();" src="images/back.png" /></a>

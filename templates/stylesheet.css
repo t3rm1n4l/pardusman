@@ -68,7 +68,6 @@ body
 	width:350px;
 	text-align:center;
 	float:left;	
-
 	min-height:300px;
 }
 
@@ -81,6 +80,7 @@ body
 	text-align:center;
 	float:left;	
 	min-height:300px;
+
 
 }
 
@@ -124,20 +124,14 @@ body
 
 }
 
-#step1_right 
+#step_right 
 {
 
 
 	position:relative;
-	padding-top:115px;
-	background-image : url('images/step1.png') ;
-	background-repeat : no-repeat;
-	background-attachment:relative;
-	background-position: 0% 20% ;
+	padding-top:70px;
 	color:#ad3d14;
 	text-align:left;
-
-
 
 }
 
@@ -322,6 +316,7 @@ p.error_text
 	text-align:right;
 	border:none;
 	text-decoration:none;
+	position:relative;
 }
 
 
@@ -459,7 +454,7 @@ p.error_text
 #sign_up
 {
 	position:relative; 
-	left:90px; 
+	left:125px; 
 	top:20px;
 	color:black;
 	font-size:12px;
@@ -475,6 +470,7 @@ input.submit
 	background-color:gray;
 	border:1px solid black;
 	font-size:13px;
+	cursor:pointer;
 }
 
 #lang_selector
@@ -492,7 +488,7 @@ input.submit
 
 }
 
-#lang
+.lang
 {
 	padding-left:4px;
 	width:145px;
@@ -504,9 +500,9 @@ input.submit
 {
 
 	width:50px;
-	height:200px;
+	height:150px;
 	float:left;
-	padding-top:70px;
+	padding-top:50px;
 	position:relative;
 	text-align:center;
 
@@ -532,8 +528,8 @@ input.submit
 {
 	width:220px; 
 	height:19px;
-	top:50%;
-	left:50%;
+	top:60%;
+	left:60%;
 	margin-left:-110px;
 	background-image: url('images/ajax-loader.gif');
 	background-repeat:no-repeat;
@@ -545,11 +541,14 @@ input.submit
 
 #package_div
 {
-	width:260px;
+	width:300px;
 	background-color:white;
 	border: 1px solid #ad3d14;	
         color:black;
 	padding:5px;
+	max-height:400px;
+	text-align:left;
+	overflow-y:auto;
 }
 
 .border_left
@@ -561,6 +560,7 @@ input.submit
 #package_div table
 {
 	border-spacing:0px;
+	text-align:left;
 	
 }
 
@@ -599,3 +599,90 @@ input.submit
 	color:#332c2c;
 
 }
+
+
+div.scrollable {
+	
+	/* required settings */
+	position:relative;
+	overflow:hidden;
+	width: 360px;	
+	height:93px;	
+	margin-left:3px;
+	margin-right:3px;
+
+	/* custom decorations */
+
+
+}
+
+/* 
+	root element for scrollable items. Must be absolutely positioned
+	and it should have a super large width to accomodate scrollable items.
+	it's enough that you set width and height for the root element and
+	not for this element.
+*/
+div.scrollable div.items {	
+	/* this cannot be too large */
+	width:20000em;	
+	position:absolute;
+	clear:both;		
+	
+	/* decoration */
+
+}
+
+
+/* single scrollable item 
+div.scrollable div.items div {
+	float:left;
+	
+
+	text-align:center;
+	width:100px;
+	padding:25px 0px;
+	font-size:30px;
+	font-family: 'bitstream vera sans';
+	border:1px outset #ccc;
+	background-color: #ddd;
+	margin-right: 20px;	
+	-moz-border-radius:5px;
+}
+
+*/
+
+
+/* active item */
+div.scrollable div.items div.active {
+	border:1px solid black;	
+	margin-left:5px;
+	margin-left:5px;
+}
+
+
+.next
+{
+	cursor:pointer;
+	width:180px;
+	padding-top:13px;
+	padding-left:3px;
+	position:relative;
+	text-align:left;
+	float:left;
+	color:black;
+	font-size:11px;
+}
+
+.prev
+{
+	cursor:pointer;
+	width:180px;
+	padding-top:13px;
+	padding-right:3px;
+	color:black;s
+	position:relative;
+	text-align:right;
+	float:left;
+	font-size:11px;
+}
+

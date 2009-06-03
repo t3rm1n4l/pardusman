@@ -28,11 +28,12 @@ def ajax_pool(request):
 		user = str(request.user.username)
 
 	
-	return render_to_response('content_pool.html',{'user':user, 'repos':repositories()})
+	return render_to_response('content_pool.html',{'user':user, 'repos':repositories(), 'wallpapers':wallpapers(),'media':media()})
 
 
 ###############################################################
 # TODO: Package HTML generator
+# Generate .html packages html file for each repo
 ################################################################
 
 
@@ -44,6 +45,12 @@ def packages_pool_generator(request):
 	handle.write(html)
 	return HttpResponse("Done")
 
+
+
+###############################################################
+# TODO: Pagination with package widget
+# For improving the package widget efficiency
+################################################################
 
 def packages_pool(request):
 	return render_to_response('repo.html',{})
@@ -72,7 +79,7 @@ def packages():
 
 	tree = ET.parse(settings.REPOS_URL+'/repo1/'+'pisi-index.xml')
 	pkgs = tree.findall('Package')
-	for p in pkgs[:]:
+	for p in pkgs:
 		name = p.find('Name').text
 		partof = p.find('PartOf').text.replace('.','-')
 		packages.append((name,partof))
@@ -95,11 +102,30 @@ def packages():
 
 
 
+
+def wallpapers():
+	
+	wallpaper_dir = 'wallpapers'
+	prefix_path = os.path.join(settings.MEDIA_URL,'templates')
+	return [ os.path.join(wallpaper_dir,x) for x in os.listdir(os.path.join(prefix_path,wallpaper_dir)) ]
+
+
+def media():
+
+	media = {'iso':'ISO Image','usb-drive':'USB disk','qemu':'QEMU Image','vmware':'VMWare Image','xen':'Xen Image'}
+
+	return media
+
+
 ###############################################################
 # TODO: Email Confirmation
 # Also deal the forms, inside class functions exection problems
 ###############################################################
 
+
+###############################################################
+# TODO: OpenID authentication
+###############################################################
 
 def register_user(request):
 	

@@ -1,9 +1,8 @@
 <!-- Package Selection page -->
 
-<div id="page5">
-			<div id="step1_right">
-
-
+<div id="page5" style="overflow:hidden" >
+			<div id="step_right">
+			<img src="images/steps/step5.png" />
 			<p class="description"> You can select the required components and packages from the dropdown widget for building the custom version of pardus </p>
 			<p class="description_title">Select required packages</p>
 
@@ -12,8 +11,9 @@
 
 $('tr[class$=container]').show();
 $('tr[class$=package]').hide();
+$('tr[class$=component]').hide(); 
 $('tr[class^='+$('#search').val()+']').show();
-$('tr[class$=component]').hide(); "
+"
 
   />&nbsp; <a  style="cursor:pointer; position:relative;"  onclick="$('tr[class$=component]').show(); $('[class$=container]').hide(); $('.direction').attr({src:'images/down.png'});">Reset</a>  </p>
 			
@@ -77,6 +77,7 @@ src="images/down.png"></td>
 
 
 			</div>
+			<br class="spacing" />
 
 			<div id="nextprev">
 			<a href="#"><img onclick="load_step4();" src="images/back.png" /></a>

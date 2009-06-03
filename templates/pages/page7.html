@@ -1,0 +1,32 @@
+<div id="page7">
+			<div id="step_right">
+			<img src="images/steps/step7.png" />
+
+			<p class="description"> Select the media type for which you would like to build the custom version of Pardus</p>
+			<p class="description_title">Choose media type</p>
+
+
+			<form name="step1_form">
+
+			{% for name,medium in media.items %}
+			<div id="radio_label_div"><label class="content_label_radio"> {{ medium }} </label></div>
+			<div id="radio_div"><input class="input_radio" type="radio" name="image_type" value={{ name }} checked ></input> </div>
+			<br class="spacing" />
+			{% endfor %}
+
+		
+
+			</form>
+
+			<br class="spacing" />
+			<div id="nextprev">
+			<a href="#"><img onclick="load_step6();" src="images/back.png" /></a>
+			<a href="#"><img onclick="$('#signup_form').hide(); $('#signup_form').siblings().hide(); $('#confirmation').show(); $('#popup').show();" src="images/finish.png" /></a>
+			</div>
+
+			</div>
+			
+
+
+</div>
+
