@@ -129,7 +129,7 @@ body
 
 
 	position:relative;
-	padding-top:80px;
+	padding-top:70px;
 	color:#ad3d14;
 	text-align:left;
 
@@ -477,7 +477,7 @@ input.submit
 {
 	background-color:white;
 	width:150px;
-	height:150px;
+	min-height:150px;
 	border:1px solid black;
 	float:left;
 	position:relative;
@@ -487,6 +487,8 @@ input.submit
 	
 
 }
+
+
 
 .lang
 {

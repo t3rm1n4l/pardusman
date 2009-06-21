@@ -2,8 +2,7 @@
 
 <div id="page5" style="overflow:hidden" >
 			<div id="step_right">
-
-
+			<img src="images/steps/step5.png" />
 			<p class="description"> You can select the required components and packages from the dropdown widget for building the custom version of pardus </p>
 			<p class="description_title">Select required packages</p>
 
@@ -19,6 +18,7 @@ $('tr[class^='+$('#search').val()+']').show();
   />&nbsp; <a  style="cursor:pointer; position:relative;"  onclick="$('tr[class$=component]').show(); $('[class$=container]').hide(); $('.direction').attr({src:'images/down.png'});">Reset</a>  </p>
 			
 			<div id="package_div">
+			<form>
 
 			<table id="pkg_components">
 
@@ -27,7 +27,7 @@ $('tr[class^='+$('#search').val()+']').show();
 
 			<tr class="{{ component }}-component" >
 			<td>{{ component }}</td>
-			<td><input type="checkbox" onclick="$('.{{ component }}box').click();" ></td>
+			<td><input type="checkbox" name={{ component }}_component onclick="$('.{{ component }}box').click();" ></td>
 
 
 
@@ -61,7 +61,7 @@ src="images/down.png"></td>
 			<tr class='{{ pkg }}-{{ component }}-package' >
 
 			<td><div id="pkgs" >{{ pkg }}</div></td>
-			<td><input class='{{ component }}box' type="checkbox"></td>
+			<td><input name={{ pkg }}_package class='{{ component }}box' type="checkbox"></td>
 
 			</tr>
 
@@ -76,8 +76,10 @@ src="images/down.png"></td>
 
 			</table>
 
-
+			</form>
 			</div>
+			<br class="spacing" />
+			<div id='total_size' class="content_text"><b>Total size: 0 MB </b></div>
 			<br class="spacing" />
 
 			<div id="nextprev">

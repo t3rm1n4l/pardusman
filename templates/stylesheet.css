@@ -477,7 +477,6 @@ input.submit
 {
 	background-color:white;
 	width:150px;
-	height:150px;
 	border:1px solid black;
 	float:left;
 	position:relative;
@@ -487,6 +486,8 @@ input.submit
 	
 
 }
+
+
 
 .lang
 {

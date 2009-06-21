@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Create your views here.
 from django.template.loader import get_template
 from django.template import Context
@@ -11,9 +12,11 @@ from pardusman.wizard.forms import RegistrationForm
 import datetime,random,hashlib
 from django.shortcuts import render_to_response, get_object_or_404
 from django.core.mail import send_mail
+from django.core.cache import cache
 
 from pardusman import settings
-import os,re
+import os,re,tempfile
+
 from xml.etree import ElementTree as ET
 
 def home(request):
@@ -21,6 +24,50 @@ def home(request):
 	html = site_template.render(Context({}))
 	return HttpResponse(html)
 
+
+def upload(request):
+
+
+	if request.FILES.has_key('home_file'):
+		if request.FILES['home_file'].content_type.endswith('zip') or request.FILES['home_file'].content_type.endswith('tar.gz') or request.FILES['home_file'].content_type.endswith('bz2'):
+			tmp = tempfile.mkstemp(suffix='',prefix='home_',dir=settings.TMP_FILES)[1]
+			fd = file(tmp,'w')
+			for chunk in request.FILES['home_file'].chunks():
+				fd.write(chunk)
+			fd.close()
+			request.session['home_file'] = tmp
+			return HttpResponse("{ error:'error', \n msg:'success' \n}")
+
+	if request.FILES.has_key('wallpaper_file'):
+		if request.FILES['wallpaper_file'].content_type.startswith('image'):
+			tmp = tempfile.mkstemp(suffix='.%s' %request.FILES['wallpaper_file'].name.split('.')[1],prefix='wallpaper_',dir=os.path.join(settings.MEDIA_URL,'templates/user_wallpapers/fullsize'))[1]
+			fd = file(tmp,'w')
+			for chunk in request.FILES['wallpaper_file'].chunks():
+				fd.write(chunk)
+			fd.close()
+			fd = os.system("/usr/bin/convert %s  -resize 'x90' %s" % (tmp, os.path.join(settings.MEDIA_URL,'templates/user_wallpapers/',os.path.basename(tmp))))
+
+			request.session['wallpaper_file'] = tmp
+			return HttpResponse("{ error:'error', \n msg:'%s' \n}" % os.path.join('user_wallpapers',os.path.basename(tmp)))
+
+
+	if request.FILES.has_key('release_file'):
+		if request.FILES['release_file'].content_type.startswith('text'):
+			tmp = tempfile.mkstemp(suffix='',prefix='release_',dir=settings.TMP_FILES)[1]
+			fd = file(tmp,'w')
+			for chunk in request.FILES['release_file'].chunks():
+				fd.write(chunk)
+			fd.close()
+			request.session['release_file'] = tmp
+
+			return HttpResponse("{ error:'error', \n msg:'success' \n}")
+	
+	del request.session['home_file'] 
+	del request.session['release_file'] 
+
+
+	return HttpResponse('False')
+    
 
 def ajax_pool(request):
 
@@ -31,6 +78,65 @@ def ajax_pool(request):
 	return render_to_response('content_pool.html',{'user':user, 'repos':repositories(), 'wallpapers':wallpapers(),'media':media()})
 
 
+def page_loader(request):
+	post = request.POST.copy()
+	
+	for p,k in post.items():
+		if p not in ['username','password','password1','password2']:
+			request.session[p] = k
+
+
+	if post['page'] == 'page1':
+		user = request.user.username
+		returns = render_to_response('page1.html',{'user':user})
+
+	elif post['page'] == 'page2':
+		repo = repositories()
+		returns = render_to_response('page2.html',{'repos':repo}) 	
+
+	elif post['page'] == 'page3':
+
+		returns = render_to_response('page3.html',{'languages':languages()})
+
+	elif post['page'] == 'page4':
+		f = file('/tmp/l','w')
+		for i in request.POST.getlist('language'):
+			f.write(i+'\n')
+		f.close()
+		
+		returns = render_to_response('page4.html',{})
+		
+	elif post['page'] == 'page5':
+
+		
+		returns = render_to_response('%s.html' % request.session['repo_type'],{})
+
+	elif post['page'] == 'page6':
+		returns = render_to_response('page6.html',{'wallpapers':wallpapers()})
+	elif post['page'] == 'page7':
+		returns = render_to_response('page7.html',{'media':media()})
+
+	elif post['page'] == 'page8':
+		alls=""
+		for k,v in request.session.items():
+			alls=alls+str(k)+' : '+str(v)+'\n'	
+
+
+		for key in request.session.keys():
+			if not key.startswith('_'):
+				del request.session[key]
+
+
+		file('/tmp/tp','w').write(alls)
+
+		returns = render_to_response('page8.html',{})
+	else:	
+                returns = render_to_response('page0.html',{})
+	
+
+	return returns
+
+
 ###############################################################
 # TODO: Package HTML generator
 # Generate .html packages html file for each repo
@@ -39,10 +145,10 @@ def ajax_pool(request):
 
 def packages_pool_generator(request):
 	template = get_template('packages.html')
-	html = template.render(Context({'package_map':packages()}))
-	
-	handle = file(settings.MEDIA_ROOT + '/templates/repo.html',"w")
-	handle.write(html)
+	for repo in repositories().values():
+		html = template.render(Context({'package_map':packages(os.path.join(settings.REPOS_URL,repo))}))
+		handle = file(os.path.join(settings.MEDIA_ROOT, 'templates/pages/','%s.html' %repo),"w")
+		handle.write(html)
 	return HttpResponse("Done")
 
 
@@ -65,19 +171,19 @@ def repositories():
 	for repo in os.listdir(repo_urls):
 		if os.path.exists(os.path.join(repo_urls,repo,"pisi-index.xml")):
 			temp = open(os.path.join(repo_urls,repo,"pisi-index.xml"))
-			repos[re.findall(regex, temp.read(100))[0]] = os.path.join(repo_urls,repo)
+			repos[re.findall(regex, temp.read(100))[0]] = os.path.join(repo)
 			temp.close()
 
 	return repos	
 
 
 
-def packages():
+def packages(URL):
 	
 	components = set()
 	packages =[]
 
-	tree = ET.parse(settings.REPOS_URL+'/repo1/'+'pisi-index.xml')
+	tree = ET.parse(os.path.join(URL,'pisi-index.xml'))
 	pkgs = tree.findall('Package')
 	for p in pkgs:
 		name = p.find('Name').text
@@ -100,7 +206,21 @@ def packages():
 
 	return package_map
 
+def languages():
+	lang =  {
+    "ca_ES": "Catalan",
+    "de_DE": "Deutsch",
+    "es_ES": "Spanish",
+    "fr_FR": "French",
+    "it_IT": "Italian",
+    "nl_NL": "Dutch",
+    "pl_PL": "Polish",
+    "pt_BR": "Brazilian Portuguese",
+    "sv_SE": "Svenska",
+    "tr_TR": "Turkish",
+}
 
+	return lang
 
 
 def wallpapers():
@@ -109,6 +229,29 @@ def wallpapers():
 	prefix_path = os.path.join(settings.MEDIA_URL,'templates')
 	return [ os.path.join(wallpaper_dir,x) for x in os.listdir(os.path.join(prefix_path,wallpaper_dir)) ]
 
+def update_size(request):
+	items = []
+	for item in request.POST:
+		if item.endswith('_component') or item.endswith('_package'):
+			items.append(item)
+
+
+
+	if not cache.has_key('repo'):
+		from pardusman.repotools.packages import Repository, LivePackagePool
+		repo = Repository(request.session['repo_type'])
+		repo.parse_data(os.path.join(settings.REPOS_URL,repo.name,'pisi-index.xml'))
+		cache.set('repo',repo)
+
+	else:
+
+		from pardusman.repotools.packages import LivePackagePool
+		live_packages = LivePackagePool()
+		for item in items:
+			live_packages.add_item(item)
+		size = live_packages.get_size()/(1024.0*1024)
+		return HttpResponse('<b>Total size: %.2f MB</b>' % size)
+  
 
 def media():
 

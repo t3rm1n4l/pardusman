@@ -4,19 +4,23 @@
 
 			<p class="description"> Select from the following list, the required language support for the customised distro</p>
 			<p class="description_title">Select language(s)</p>
-
+			<div id='languages'>
+				
 				<div id="lang_selector" class="list" >
-				<div class="lang">US English</div>
-				<div class="lang">Malayalam</div>
-				<div class="lang">Hindi</div>
-				<div class="lang">Tamil</div>
+				{% for lid,lang in languages.items %}
+				<div class="lang">{{ lang }}<input type='hidden' name='language' value='{{ lid }}' > </div>
+				{% endfor %}
 				</div>
 				<div id="lang_chooser">
 				<img onclick="addtolangSelectList();" src="images/lang_next.png">
 				<img onclick="addtolangList();" src="images/lang_back.png">
 				</div>
-				<div id="lang_selector" class="selected_list" > </div>
-				<p class="description" style="clear:both" >* Language in bold is the default one.</p>
+				<form><div id="lang_selector" class="selected_list" > 
+				<div class="lang default_lang">English<input type='hidden' name='language' value='en_US' > </div>
+
+				</div></form>
+			</div>
+				<p class="description" style="clear:both" ><br />* Language in bold is the default one.</p>
 
 			<div id="nextprev" style="clear:both">
 			<a href="#"><img  onclick="load_step2();" src="images/back.png" /></a>

@@ -110,7 +110,7 @@
 
 <div id="page2">
 			<div id="step_right">
-
+			<img src="images/steps/step2.png" />
 
 			<p class="description"> Select from the following whether which repository you would like to use for building the customised version of Pardus. <br />Repositories are based on different Pardus versions.</p>
 			<p class="description_title">Choose repository version</p>
@@ -146,7 +146,7 @@
 
 <div id="page3">
 			<div id="step_right">
-
+			<img src="images/steps/step3.png" />
 
 			<p class="description"> Select from the following list, the required language support for the customised distro</p>
 			<p class="description_title">Select language(s)</p>
@@ -181,7 +181,7 @@
 
 <div id="page4">
 			<div id="step_right">
-
+			<img src="images/steps/step4.png" />
 
 			<p class="description"> Upload the required RELEASE files to be appeared in the CD Rom / Image directory. <br> Also you can upload Home folder contents. Home folder contents should be uploaded either as zip, tar.gz, bz2. This step is optional. </p>
 			<p class="description_title">Upload RELEASE File and Home directory data</p>
@@ -221,7 +221,7 @@
 
 <div id="page5">
 			<div id="step_right">
-
+			<img src="images/steps/step5.png" />
 
 			<p class="description"> You can select the required components and packages from the dropdown widget for building the custom version of pardus </p>
 			<p class="description_title">Select required packages</p>
@@ -295,7 +295,7 @@ else { $('[class$={{ component }}-package]').show(); $(this).attr({src:'images/u
 
 <div id="page6">
 			<div id="step_right">
-
+			<img src="images/steps/step6.png" />
 
 			<p class="description"> You can select the default wallpaper for your custom version of the pardus live CD by clicking on the image. You can also upload a wallpaper that you would love and choose it </p>
 			<p class="description_title">Select the default wallpaper</p>
@@ -340,7 +340,7 @@ else { $('[class$={{ component }}-package]').show(); $(this).attr({src:'images/u
 
 <div id="page7">
 			<div id="step_right">
-
+			<img src="images/steps/step7.png" />
 
 			<p class="description"> Select the media type for which you would like to build the custom version of Pardus</p>
 			<p class="description_title">Choose media type</p>

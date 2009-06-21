@@ -4,13 +4,12 @@
 
 			<p class="description"> You can select the default wallpaper for your custom version of the pardus live CD by clicking on the image. You can also upload a wallpaper that you would love and choose it </p>
 			<p class="description_title">Select the default wallpaper</p>
-
 			
 <div class="scrollable">
 
 	
 	<!-- root element for the items -->
-	<div class="items">
+	<div id="wallpaper_items" class="items">
 		{% for wallpaper in wallpapers %}
 		<div class="wallpaper" style="float:left; "><img style="cursor:pointer;" src="{{ wallpaper }}" /></div>
 		{% endfor %}
@@ -29,9 +28,14 @@
 			
 			<table>
 			<tr><td><label class="content_label">Upload</label></td> 
-			<td><input class="content_input" type="text" name="username" /> </td> 
-			<td><a href="#"><img style="color:transparent"  src="images/button.png"></a></td></tr>
+			<td>
+			<form method="post" enctype="multipart/form-data">
+			<input id="wallpaperfile" class="content_input" type="file" name="wallpaper_file" />
+			</form></td> 
+			<td><a href="#" onclick='wallpaper_upload()' ><img style="color:transparent"  src="images/button.png"></a></td></tr>
 			</table>
+			<br class="spacing">
+			<div id="wallpapertext" class="content_text"></div>
 			<br class="spacing">
 			<div id="nextprev">
 			<a href="#"><img onclick="load_step5();" src="images/back.png" /></a>

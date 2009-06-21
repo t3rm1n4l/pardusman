@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 # Django settings for pardusman project.
 
 DEBUG = True
@@ -12,9 +13,11 @@ MANAGERS = ADMINS
 DATABASE_ENGINE = 'mysql'           # 'postgresql_psycopg2', 'postgresql', 'mysql', 'sqlite3' or 'oracle'.
 DATABASE_NAME = 'pardus'             # Or path to database file if using sqlite3.
 DATABASE_USER = 'root'             # Not used with sqlite3.
-DATABASE_PASSWORD = 'fossmeet'         # Not used with sqlite3.
+DATABASE_PASSWORD = ''         # Not used with sqlite3.
 DATABASE_HOST = ''             # Set to empty string for localhost. Not used with sqlite3.
 DATABASE_PORT = ''             # Set to empty string for default. Not used with sqlite3.
+CACHE_BACKEND = 'memcached://127.0.0.1:11211/'
+
 
 # Local time zone for this installation. Choices can be found here:
 # http://en.wikipedia.org/wiki/List_of_tz_zones_by_name
@@ -43,7 +46,7 @@ MEDIA_ROOT = '/home/mycode/pardusman/'
 MEDIA_URL = ''
 
 REPOS_URL = '/home/mycode/repos'
-
+TMP_FILES = '/home/mycode/files'
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
@@ -60,6 +63,7 @@ TEMPLATE_LOADERS = (
 )
 
 MIDDLEWARE_CLASSES = (
+    'django.middleware.cache.CacheMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -69,6 +73,7 @@ ROOT_URLCONF = 'pardusman.urls'
 
 TEMPLATE_DIRS = (
      '/home/mycode/pardusman/templates/',
+     '/home/mycode/pardusman/templates/pages',
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
