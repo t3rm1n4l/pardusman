@@ -54,7 +54,7 @@ class Package:
         self.inst_size = int(node.getTagData('InstalledSize'))
         self.uri = node.getTagData('PackageURI')
         self.sha1sum = node.getTagData('PackageHash')
-        self.component = node.getTagData('PartOf')
+        self.component = node.getTagData('PartOf').replace('.','-')
         self.summary = ""
         self.description = ""
         for tag in node.tags():
@@ -94,7 +94,7 @@ Summary: %s""" % (
 class Component:
     def __init__(self, node):
         self.node = node
-        self.name = node.getTagData('Name')
+        self.name = node.getTagData('Name').replace('.','-')
         self.packages = []
 	self.node = []
 
@@ -287,9 +287,11 @@ class LivePackagePool:
 				self.components[item[0]] = 1
 
 	def fix_components(self):
+		temp_comp = self.components
 		for comp in self.components:
 			if len(self.repo.components[comp]) != self.components[comp]:
-				del self.components[comp]
+				del temp_comp[comp]
+		self.components = temp_comp
 
 
 	def update_packages(self):

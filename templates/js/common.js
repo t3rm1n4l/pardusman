@@ -434,6 +434,9 @@ function load_step5()
 
 function load_step6()
 {
+	update_size();
+	//Update the size label and live_packages cache object
+
 	$("#loading").show();
 		var senddata = $('form').serialize();
 		senddata = senddata + '&page=page6';

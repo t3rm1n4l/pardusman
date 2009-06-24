@@ -99,11 +99,7 @@ def page_loader(request):
 		returns = render_to_response('page3.html',{'languages':languages()})
 
 	elif post['page'] == 'page4':
-		f = file('/tmp/l','w')
-		for i in request.POST.getlist('language'):
-			f.write(i+'\n')
-		f.close()
-		
+		request.session['languages'] = request.POST.getlist('language')
 		returns = render_to_response('page4.html',{})
 		
 	elif post['page'] == 'page5':
@@ -118,8 +114,11 @@ def page_loader(request):
 
 	elif post['page'] == 'page8':
 		alls=""
+		p ={}
 		for k,v in request.session.items():
 			alls=alls+str(k)+' : '+str(v)+'\n'	
+			p[k] = v
+		generate_project_file(p)
 
 
 		for key in request.session.keys():
@@ -142,6 +141,36 @@ def page_loader(request):
 # Generate .html packages html file for each repo
 ################################################################
 
+def generate_project_file(pool):
+	from pardusman.repotools.project import Project
+	from django.core.cache import cache
+	project = Project()
+	project.title = pool['image_title']
+	project.repo = pool['repo_type']
+	project.media = pool['image_type']
+
+	project.type = pool['image_mode']
+	project.hostname = pool['hostname']
+
+	if pool.has_key('wallpaper'):
+		project.wallpaper = pool['wallpaper']
+
+	if pool.has_key('release_file'):
+		project.release_files = pool['release_file']
+	if pool.has_key('home_file'):
+		project.user_content = pool['home_file']
+	lp = cache.get('live_packages')
+	lp.fix_components()
+	
+	project.selected_packages = list(lp.packages)
+	project.all_packages = list(lp.required_packages)
+	project.selected_components = list(lp.components)
+	project.default_language = pool['languages'][0]
+	project.selected_languages = pool['languages']
+	
+
+	project.save('/tmp/test_project')
+	
 
 def packages_pool_generator(request):
 	template = get_template('packages.html')
@@ -250,6 +279,7 @@ def update_size(request):
 		for item in items:
 			live_packages.add_item(item)
 		size = live_packages.get_size()/(1024.0*1024)
+		cache.set('live_packages',live_packages)
 		return HttpResponse('<b>Total size: %.2f MB</b>' % size)
   
 
