@@ -278,20 +278,25 @@ class LivePackagePool:
 
 	def add_item(self, name):
 		item = name.split('_')
-		if item[1] == 'package':
-			self.packages.add(item[0])
-		else:
+		if item[-1] == 'component':
 			if item[0] in self.components:
 				self.components[item[0]] = self.components[item[0]] + 1
 			else:
 				self.components[item[0]] = 1
 
+		if item[-1] == 'package':
+			self.packages.add(item[0])
+			if item[-2] in self.components:
+				self.components[item[-2]] = self.components[item[-2]] + 1
+			else:
+				self.components[item[-2]] = 1
+
 	def fix_components(self):
-		temp_comp = self.components
-		for comp in self.components:
-			if len(self.repo.components[comp]) != self.components[comp]:
-				del temp_comp[comp]
-		self.components = temp_comp
+		temp_comp = self.components.copy()
+		for comp in temp_comp:
+			if len(self.repo.components[comp])+1 != temp_comp[comp] :
+				self.components.pop(comp)
+
 
 
 	def update_packages(self):
@@ -309,6 +314,7 @@ class LivePackagePool:
 		for pkg in self.required_packages:
 			self.size = self.size + self.repo.packages[pkg].size
 			self.inst_size = self.size + self.repo.packages[pkg].inst_size
+
 
 	def get_size(self):
 		self.update_packages()

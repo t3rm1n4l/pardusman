@@ -118,6 +118,8 @@ def page_loader(request):
 		for k,v in request.session.items():
 			alls=alls+str(k)+' : '+str(v)+'\n'	
 			p[k] = v
+		file('/tmp/tp','w').write(alls)
+
 		generate_project_file(p)
 
 
@@ -126,7 +128,6 @@ def page_loader(request):
 				del request.session[key]
 
 
-		file('/tmp/tp','w').write(alls)
 
 		returns = render_to_response('page8.html',{})
 	else:	
@@ -220,13 +221,16 @@ def packages(URL):
 		packages.append((name,partof))
 		components.add(partof)
 
+	from django.utils.datastructures import SortedDict
 
-
-	package_map = {}
+	package_map = SortedDict()
 	
 	def map_generate(pkgs):
 		if pkgs[1] == comp:
 			return pkgs[0]
+
+	components = list(components)
+	components.sort()
 
 	for comp in components:
 		P = map(map_generate,packages)
