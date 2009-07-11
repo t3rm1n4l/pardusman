@@ -10,11 +10,11 @@
 
 
 			<div id="radio_label_div"><label class="content_label_radio"> Live </label></div>
-			<div id="radio_div"><input class="input_radio" type="radio" name="image_mode" value="live" onclick="enableField();" checked ></input> </div>
+			<div id="radio_div"><input id="live_radio" class="input_radio" type="radio" name="image_mode" value="live" onclick="enableField();" checked ></input> </div>
 			<br class="spacing" />
 			<div id="radio_label_div"><label class="content_label_radio"> Installation </label></div>
 
-			<div id="radio_div"><input class="input_radio" type="radio" name="image_mode" value="install" onclick="disableField();" ></input></div>
+			<div id="radio_div"><input id="install_radio" class="input_radio" type="radio" name="image_mode" value="install" onclick="disableField();" ></input></div>
 
 
 			<br class="spacing" />
@@ -22,7 +22,7 @@
 
 
 			<div id="label_div" ><label class="content_label"> Image Title</label></div>
-			<div id="input_div" ><input class="content_input" type="text" name="image_title" /></div>
+			<div id="input_div" ><input id="title_input" class="content_input" type="text" name="image_title" /></div>
 			<br class="spacing" />
 			<div id="label_div" ><label id="hostname_label" class="content_label"> Hostname </label></div> 
 			<div id="input_div" ><input id="hostname_input" class="content_input" type="text" name="hostname" /></div>
@@ -30,6 +30,10 @@
 			</form>
 
 			<br class="spacing" />
+			<br class="spacing" />
+			<p id="step1_error" class="content_text"></p>
+			<br class="spacing" />
+
 			<div id="nextprev">
 			<a href="#"><img onclick="load_step2();" src="images/next.png" /></a>
 			</div>

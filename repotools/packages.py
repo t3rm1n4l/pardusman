@@ -244,8 +244,8 @@ class Repository:
                 deps.add(item)
                 collect(item)
         collect(package_name)
-        if self.components.has_key("system.base"):
-            for item in self.components["system.base"]:
+        if self.components.has_key("system-base"):
+            for item in self.components["system-base"]:
                 deps.add(item)
                 collect(item)
         return deps
@@ -273,6 +273,8 @@ class LivePackagePool:
 
 		try:
 			self.repo = cache.get('repo')
+			if self.repo == None:
+				raise RepoNotInCache
 		except:
 			raise RepoNotInCache
 
@@ -306,14 +308,15 @@ class LivePackagePool:
 			for dep in self.repo.full_deps(pkg):
 				if dep not in self.required_packages and dep != pkg:
 					self.required_packages.append(dep)
-		
+
+		self.size = self.inst_size = 0
 		for pkg in self.packages:
 			self.size = self.size + self.repo.packages[pkg].size
 			self.inst_size = self.size + self.repo.packages[pkg].inst_size
 
 		for pkg in self.required_packages:
 			self.size = self.size + self.repo.packages[pkg].size
-			self.inst_size = self.size + self.repo.packages[pkg].inst_size
+			self.inst_size = self.inst_size + self.repo.packages[pkg].inst_size
 
 
 	def get_size(self):

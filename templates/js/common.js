@@ -91,9 +91,20 @@ function wallpaper_upload()
 				dataType: 'json',
 				success: function (data)
 				{
+					$("#loading").show();
+
+					$.post("page_loader", {'page':'page6'} , function(page_data){
+						
+					$('#right_container').html(page_data);
 					$('#wallpapertext').text('Wallpaper uploaded successfully !')
+
+					$("#loading").hide();
+
+					});
+					/*
 					$('#wallpaper_items').prepend('<div class="wallpaper" style="float:left; "><img style="cursor:pointer;" src="'+data.msg+'" /></div>');
-				},
+					*/
+},
 				error: function (data)
 				{
 					$('#wallpapertext').html('<b>Wallpaper upload failed.</b>')
@@ -273,6 +284,23 @@ function load_step1()
 
 function load_step2()
 {
+	
+	if ( $('#live_radio').is(':checked')==true && ($('#title_input').val() == "" || $('#hostname_input').val() =="") )
+	{
+		$('#step1_error').text('Information incomplete');
+		return true;
+	}
+	
+	
+	else if ($('#live_radio').is(':checked')==false && $('#title_input').val() == "" )
+	{
+		
+		$('#step1_error').text('Enter Image title');
+		
+		return true;
+	}
+
+	
 
 	$("#loading").show();
 		var senddata = $('form').serialize();
@@ -300,6 +328,9 @@ function load_step2()
 	$("#statusline").text("Distrotype > Repository");
 	$("#step_right").hide();
 	$("#page3").hide();	
+
+	
+
 }	
 
 
@@ -549,6 +580,32 @@ function load_step8()
 
 
 	$("#statusline").text("Distrotype > Repository > Languages > Upload > Packages > Wallpaper > Media > Build");
+
+	$("#page7").hide() ;
+
+}
+
+
+function load_userlog()
+{
+	$("#loading").show();
+
+		
+
+		
+		$.post("page_loader", { page:'userlog'} , function(data){
+
+
+			
+			$('#right_container').html(data);
+			$("#loading").hide();
+
+		});
+
+	
+
+
+	$("#statusline").text("Userlog");
 
 	$("#page7").hide() ;
 

@@ -15,7 +15,7 @@ from django.core.mail import send_mail
 from django.core.cache import cache
 
 from pardusman import settings
-import os,re,tempfile
+import os,re,tempfile, time
 
 from xml.etree import ElementTree as ET
 
@@ -84,7 +84,8 @@ def page_loader(request):
 	for p,k in post.items():
 		if p not in ['username','password','password1','password2']:
 			request.session[p] = k
-
+	if post.has_key('username'):
+		request.session['user'] = post['username']
 
 	if post['page'] == 'page1':
 		user = request.user.username
@@ -108,9 +109,25 @@ def page_loader(request):
 		returns = render_to_response('%s.html' % request.session['repo_type'],{})
 
 	elif post['page'] == 'page6':
-		returns = render_to_response('page6.html',{'wallpapers':wallpapers()})
+		wall = wallpapers()
+		if post.has_key('wallpaper'):
+			wall.append(post['wallpaper'])
+
+		returns = render_to_response('page6.html',{'wallpapers':wall})
+
 	elif post['page'] == 'page7':
 		returns = render_to_response('page7.html',{'media':media()})
+
+	elif post['page'] == 'userlog':
+		from pardusman.wizard.models import Userlogs
+		
+		ulog = Userlogs.objects.get_or_create(username=request.user.username)
+		if ulog[1] == False:
+			listings = ulog[0].scheduled_tasks.order_by('date')
+		else:
+			listings = []
+		
+		returns = render_to_response('page_userlog.html',{'userlogs':listings})
 
 	elif post['page'] == 'page8':
 		alls=""
@@ -120,7 +137,8 @@ def page_loader(request):
 			p[k] = v
 		file('/tmp/tp','w').write(alls)
 
-		generate_project_file(p)
+
+		generate_project_file(p,request.user.username)
 
 
 		for key in request.session.keys():
@@ -142,9 +160,13 @@ def page_loader(request):
 # Generate .html packages html file for each repo
 ################################################################
 
-def generate_project_file(pool):
+def generate_project_file(pool,username):
 	from pardusman.repotools.project import Project
 	from django.core.cache import cache
+	from pardusman.wizard.models import Userlogs,scheduled_distro
+
+	tmp_file = tempfile.mkstemp(suffix='.xml', prefix='project_',dir=os.path.join(settings.PROJECT_FILES))[1]
+
 	project = Project()
 	project.title = pool['image_title']
 	project.repo = pool['repo_type']
@@ -169,8 +191,26 @@ def generate_project_file(pool):
 	project.default_language = pool['languages'][0]
 	project.selected_languages = pool['languages']
 	
+	project.save(tmp_file)
+	
+	
+	ulog,flag = Userlogs.objects.get_or_create(username=username)
+	
+	if flag == True:
+		ulog.username = username
 
-	project.save('/tmp/test_project')
+	ulog = Userlogs.objects.get(username=username)
+	sched_task = scheduled_distro()
+	sched_task.date = time.strftime("%Y-%m-%d")
+	sched_task.image_title = project.title
+	sched_task.image_url = ''
+	sched_task.project_url = tmp_file
+	sched_task.image_type = project.type
+	sched_task.progress = False
+	sched_task.save()
+	ulog.scheduled_tasks.add(sched_task)
+	ulog.save()
+	
 	
 
 def packages_pool_generator(request):

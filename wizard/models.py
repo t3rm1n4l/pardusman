@@ -32,4 +32,15 @@ class Repository(models.Model):
 	packages = models.ManyToManyField(Package)
 	components = models.ManyToManyField(Components)
 
+class scheduled_distro(models.Model):
+    date = models.DateField()
+    image_title = models.CharField(max_length=60)
+    image_url = models.URLField()
+    image_type = models.CharField(max_length=60)
+    project_url = models.URLField(primary_key=True)
+    progress = models.BooleanField()
+
+class Userlogs(models.Model):
+    username = models.CharField(max_length=60,primary_key=True)
+    scheduled_tasks = models.ManyToManyField(scheduled_distro)
 

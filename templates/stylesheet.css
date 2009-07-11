@@ -22,7 +22,7 @@ body
 #header {
 	margin-right:10px;
 	height:15px;
-	color-black;
+	color:black;
 	font-family:Arial;
 	text-align:right;
 	font-size:10px;
@@ -680,10 +680,51 @@ div.scrollable div.items div.active {
 	width:180px;
 	padding-top:13px;
 	padding-right:3px;
-	color:black;s
+	color:black;
 	position:relative;
 	text-align:right;
 	float:left;
 	font-size:11px;
 }
 
+
+#userlog
+{
+	padding:10px;
+	background-color:white;
+	border: 1px solid black;
+	height:200px;
+	color:black;
+	width:400px;
+}
+
+#userlog table tr th
+{
+	font-size:11px;
+	text-align:center;
+	border-bottom:1px solid gray;
+	border-top:1px solid gray;
+
+
+}
+#userlog table tr td
+{
+	padding-left:15px;
+	padding-right:10px;
+	border-bottom:1px dotted gray;
+	color:black;
+	font-size:11px;
+
+}
+
+#userlog table tr td a
+{
+      color:grey;
+
+}
+
+#userlog table tr td a:hover
+{
+      color:#c1b5b5;
+
+}
