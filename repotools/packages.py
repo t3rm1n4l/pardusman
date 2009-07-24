@@ -41,8 +41,21 @@ class RepoNotInCache(Exception):
 
 class Package:
     def __init__(self, node):
-	self.node = node
         self.name = node.getTagData('Name')
+        self.size = int(node.getTagData('PackageSize'))
+        self.inst_size = int(node.getTagData('InstalledSize'))
+        self.component = node.getTagData('PartOf').replace('.','-')
+        deps = node.getTag('RuntimeDependencies')
+        if deps:
+            self.depends = map(lambda x: x.firstChild().data(), deps.tags('Dependency'))
+        else:
+            self.depends = []
+        self.revdeps = []
+
+
+	#FIXME: Following code is ignored to match the size limitation of memcached to meet total cache object size < 1 MB
+	'''
+	self.node = node
         self.icon = node.getTagData('Icon')
         if not self.icon:
             self.icon = 'package'
@@ -50,11 +63,8 @@ class Package:
         self.version = node.getTag('History').getTag('Update').getTagData('Version')
         self.release = node.getTag('History').getTag('Update').getAttribute('release')
         self.build = node.getTagData('Build')
-        self.size = int(node.getTagData('PackageSize'))
-        self.inst_size = int(node.getTagData('InstalledSize'))
         self.uri = node.getTagData('PackageURI')
         self.sha1sum = node.getTagData('PackageHash')
-        self.component = node.getTagData('PartOf').replace('.','-')
         self.summary = ""
         self.description = ""
         for tag in node.tags():
@@ -63,32 +73,8 @@ class Package:
         for tag in node.tags():
             if tag.name() == "Description" and tag.getAttribute("xml:lang") == "en":
                 self.description = tag.firstChild().data()
-        deps = node.getTag('RuntimeDependencies')
-        if deps:
-            self.depends = map(lambda x: x.firstChild().data(), deps.tags('Dependency'))
-        else:
-            self.depends = []
-        self.revdeps = []
-        # Keep more info: licenses, packager name
-	self.node = []
+	'''
 
-
-    def __str__(self):
-        return """Package: %s (%s)
-Version %s, release %s, build %s
-Size: %d, installed %d
-Part of: %s
-Dependencies: %s
-Reverse dependencies: %s
-Summary: %s""" % (
-            self.name, self.uri,
-            self.version, self.release, self.build,
-            self.size, self.inst_size,
-            self.component,
-            ", ".join(self.depends),
-            ", ".join(self.revdeps),
-            self.summary
-        )
 
 
 class Component:
@@ -186,7 +172,9 @@ class Repository:
         self.components = repo.components
 
 
+    #FIXME: Database storage and retrival is very slow. A database cache is to be maintained. So we will use memcached which is awesome
 	'''
+    
     def make_index(self, package_list):
         doc = piksemel.newDocument("PISI")
 
