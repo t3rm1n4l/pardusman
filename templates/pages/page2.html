@@ -8,9 +8,9 @@
 
 			<form name="step1_form">
 
-			{% for repo,name in repos.items %}
+			{% for repo in repos %}
 			<div id="radio_label_div"><label class="content_label_radio"> {{ repo }} </label></div>
-			<div id="radio_div"><input class="input_radio" type="radio" name="repo_type" value={{ name }} checked ></input> </div>
+			<div id="radio_div"><input class="input_radio" type="radio" name="repo_type" value={{ repo }} checked ></input> </div>
 			<br class="spacing" />
 			{% endfor %}
 

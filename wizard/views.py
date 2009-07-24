@@ -214,7 +214,7 @@ def generate_project_file(pool,username):
 
 def packages_pool_generator(request):
 	template = get_template('packages.html')
-	for repo in repositories().values():
+	for repo in repositories():
 		html = template.render(Context({'package_map':packages(os.path.join(settings.REPOS_URL,repo))}))
 		handle = file(os.path.join(settings.MEDIA_ROOT, 'templates/pages/','%s.html' %repo),"w")
 		handle.write(html)
@@ -233,16 +233,11 @@ def packages_pool(request):
 
 def repositories():
 	repo_urls = settings.REPOS_URL
-	regex = re.compile('<SourceName>(.*)</SourceName>')
-	repos = {}
-
+	repos = set()
 	
 	for repo in os.listdir(repo_urls):
 		if os.path.exists(os.path.join(repo_urls,repo,"pisi-index.xml")):
-			temp = open(os.path.join(repo_urls,repo,"pisi-index.xml"))
-			repos[re.findall(regex, temp.read(100))[0]] = os.path.join(repo)
-			temp.close()
-
+			repos.add(repo)
 	return repos	
 
 
