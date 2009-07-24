@@ -30,7 +30,7 @@ def upload(request):
 
 	if request.FILES.has_key('home_file'):
 		if request.FILES['home_file'].content_type.endswith('zip') or request.FILES['home_file'].content_type.endswith('tar.gz') or request.FILES['home_file'].content_type.endswith('bz2'):
-			tmp = tempfile.mkstemp(suffix='',prefix='home_',dir=settings.TMP_FILES)[1]
+			tmp = tempfile.mkstemp(suffix='.%s' % request.FILES['home_file'].name.split('.',1)[1],prefix='home_',dir=settings.TMP_FILES)[1]
 			fd = file(tmp,'w')
 			for chunk in request.FILES['home_file'].chunks():
 				fd.write(chunk)
@@ -40,20 +40,19 @@ def upload(request):
 
 	if request.FILES.has_key('wallpaper_file'):
 		if request.FILES['wallpaper_file'].content_type.startswith('image'):
-			tmp = tempfile.mkstemp(suffix='.%s' %request.FILES['wallpaper_file'].name.split('.')[1],prefix='wallpaper_',dir=os.path.join(settings.MEDIA_URL,'templates/user_wallpapers/fullsize'))[1]
+			tmp = tempfile.mkstemp(suffix='.%s' % request.FILES['wallpaper_file'].name.split('.',1)[1],prefix='wallpaper_',dir=os.path.join(settings.MEDIA_URL,'templates/user_wallpapers/fullsize'))[1]
 			fd = file(tmp,'w')
 			for chunk in request.FILES['wallpaper_file'].chunks():
 				fd.write(chunk)
 			fd.close()
 			fd = os.system("/usr/bin/convert %s  -resize 'x90' %s" % (tmp, os.path.join(settings.MEDIA_URL,'templates/user_wallpapers/',os.path.basename(tmp))))
 
-			request.session['wallpaper_file'] = tmp
 			return HttpResponse("{ error:'error', \n msg:'%s' \n}" % os.path.join('user_wallpapers',os.path.basename(tmp)))
 
 
 	if request.FILES.has_key('release_file'):
 		if request.FILES['release_file'].content_type.startswith('text'):
-			tmp = tempfile.mkstemp(suffix='',prefix='release_',dir=settings.TMP_FILES)[1]
+			tmp = tempfile.mkstemp(suffix='.%s' % request.FILES['release_file'].name.split('.',1)[1] ,prefix='release_',dir=settings.TMP_FILES)[1]
 			fd = file(tmp,'w')
 			for chunk in request.FILES['release_file'].chunks():
 				fd.write(chunk)

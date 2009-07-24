@@ -602,64 +602,6 @@ input.submit
 }
 
 
-div.scrollable {
-	
-	/* required settings */
-	position:relative;
-	overflow:hidden;
-	width: 360px;	
-	height:93px;	
-	margin-left:3px;
-	margin-right:3px;
-
-	/* custom decorations */
-
-
-}
-
-/* 
-	root element for scrollable items. Must be absolutely positioned
-	and it should have a super large width to accomodate scrollable items.
-	it's enough that you set width and height for the root element and
-	not for this element.
-*/
-div.scrollable div.items {	
-	/* this cannot be too large */
-	width:20000em;	
-	position:absolute;
-	clear:both;		
-	
-	/* decoration */
-
-}
-
-
-/* single scrollable item 
-div.scrollable div.items div {
-	float:left;
-	
-
-	text-align:center;
-	width:100px;
-	padding:25px 0px;
-	font-size:30px;
-	font-family: 'bitstream vera sans';
-	border:1px outset #ccc;
-	background-color: #ddd;
-	margin-right: 20px;	
-	-moz-border-radius:5px;
-}
-
-*/
-
-
-/* active item */
-div.scrollable div.items div.active {
-	border:1px solid black;	
-	margin-left:5px;
-	margin-left:5px;
-}
-
 
 .next
 {
@@ -726,5 +668,46 @@ div.scrollable div.items div.active {
 #userlog table tr td a:hover
 {
       color:#c1b5b5;
+
+}
+
+
+
+
+div.scrollable
+{
+	width:200px;
+	background-color:white;
+	border: 1px solid #ad3d14;	
+        color:black;
+	padding:5px;
+	height:200px;
+	overflow-x:auto;
+
+
+}
+
+div.wallpaper
+{
+  margin:5px;
+  text-align:center;
+
+  
+
+}
+
+div.wallpaper img
+{
+  border:1px solid black;
+
+
+}
+
+div.selected_wallpaper
+{
+  text-align:center;
+  border:1px dotted grey;
+  background-color:#eef1f6;
+
 
 }

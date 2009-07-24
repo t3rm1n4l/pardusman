@@ -95,15 +95,24 @@ function wallpaper_upload()
 
 					$.post("page_loader", {'page':'page6'} , function(page_data){
 						
-					$('#right_container').html(page_data);
 					$('#wallpapertext').text('Wallpaper uploaded successfully !')
 
 					$("#loading").hide();
 
 					});
-					/*
-					$('#wallpaper_items').prepend('<div class="wallpaper" style="float:left; "><img style="cursor:pointer;" src="'+data.msg+'" /></div>');
-					*/
+					
+					$('#wallpaper_items').prepend('<div class="wallpaper upload"><img style="cursor:pointer;" src="'+data.msg+'" /></div>');
+					$('.upload').click(function(){$(this).fadeOut(100);$(this).fadeIn(100);
+
+
+					$('.wallpaper').removeClass('selected_wallpaper');
+					$(this).addClass("selected_wallpaper");
+
+
+
+
+					});
+		
 },
 				error: function (data)
 				{
@@ -254,6 +263,7 @@ function load_step1()
 {
 
 
+
 	$("#loading").show();
 
 	$("#statusline").text("Distrotype");
@@ -279,6 +289,8 @@ function load_step1()
 	}
 
 	$("#page2").hide();
+
+
 }	
 
 
@@ -488,7 +500,14 @@ function load_step6()
 		$.post("page_loader", senddata , function(data){
 		
 			$('#right_container').append(data);
-			$('.wallpaper').click(function(){$(this).fadeOut(100);$(this).fadeIn(100);});
+			$('.wallpaper').click(function(){$(this).fadeOut(100);$(this).fadeIn(100);
+
+			    $('.wallpaper').removeClass('selected_wallpaper');
+			    $(this).addClass("selected_wallpaper");
+
+
+			});
+		
 
 			$(function() {$("div.scrollable").scrollable({ size:3,items:'.items',prev:'.prev',next:'.next'});	
 	
@@ -515,7 +534,7 @@ function load_step7()
 {
 	$("#loading").show();
 		var senddata = $('form').serialize();
-		var wallpaper = $('.active img').attr('src');
+		var wallpaper = $('.selected_wallpaper img').attr('src');
 		senddata = senddata + '&page=page7&wallpaper='+wallpaper;
 		$.post("page_loader", senddata);
 	if($("#page7").length)
@@ -545,7 +564,11 @@ function load_step7()
 
 
 	$("#statusline").text("Distrotype > Repository > Languages > Upload > Packages > Wallpaper > Media");
+$(function()
+{
+	load_step6();
 
+});
 	$("#page6").hide() ;
 	$("#page8").hide() ;	
 }

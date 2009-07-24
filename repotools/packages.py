@@ -303,13 +303,14 @@ class LivePackagePool:
 
 	def update_packages(self):
 
+		self.size = 0 
+		self.inst_size = 0
 		
 		for pkg in self.packages:
 			for dep in self.repo.full_deps(pkg):
 				if dep not in self.required_packages and dep != pkg:
 					self.required_packages.append(dep)
 
-		self.size = self.inst_size = 0
 		for pkg in self.packages:
 			self.size = self.size + self.repo.packages[pkg].size
 			self.inst_size = self.size + self.repo.packages[pkg].inst_size
