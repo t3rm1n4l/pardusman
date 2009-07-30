@@ -310,15 +310,14 @@ def update_size(request):
 		repo.parse_data(os.path.join(settings.REPOS_URL,repo.name,'pisi-index.xml'))
 		cache.set('repo',repo)
 
-	else:
 
-		from pardusman.repotools.packages import LivePackagePool
-		live_packages = LivePackagePool()
-		for item in items:
-			live_packages.add_item(item)
-		size = live_packages.get_size()/(1024.0*1024)
-		cache.set('live_packages',live_packages)
-		return HttpResponse('<b>Total size: %.2f MB</b>' % size)
+	from pardusman.repotools.packages import LivePackagePool
+	live_packages = LivePackagePool()
+	for item in items:
+		live_packages.add_item(item)
+	size = live_packages.get_size()/(1024.0*1024)
+	cache.set('live_packages',live_packages)
+	return HttpResponse('<b>Total size: %.2f MB</b>' % size)
   
 
 def media():
