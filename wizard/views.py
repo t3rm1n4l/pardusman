@@ -172,15 +172,25 @@ def generate_project_file(pool,username):
 	project.media = pool['image_type']
 
 	project.type = pool['image_mode']
-	project.hostname = pool['hostname']
+
+	if pool.has_key('hostname'):
+		project.hostname = pool['hostname']
+
+	if pool.has_key('default_user'):
+		project.username = pool['default_user']
+
+	if pool.has_key('default_password1'):
+		project.password = pool['default_password1']
 
 	if pool.has_key('wallpaper'):
-		project.wallpaper = pool['wallpaper']
+		if pool['wallpaper'] !='null':
+			project.wallpaper = pool['wallpaper']
+	
 
 	if pool.has_key('release_file'):
 		project.release_files = pool['release_file']
 	if pool.has_key('home_file'):
-		project.user_content = pool['home_file']
+		project.user_contents = pool['home_file']
 	lp = cache.get('live_packages')
 	lp.fix_components()
 	

@@ -1,8 +1,8 @@
 
 function enableField()
 {
-	$("#hostname_input").show();
-	$("#hostname_label").show();
+	$(".live_disk").show();
+	$(".live_disk").show();
 	
 }
 
@@ -10,8 +10,8 @@ function enableField()
 function disableField()
 {
 
-	$("#hostname_input").hide();
-	$("#hostname_label").hide();
+	$(".live_disk").hide();
+	$(".live_disk").hide();
 	
 }
 
@@ -297,10 +297,28 @@ function load_step1()
 function load_step2()
 {
 	
-	if ( $('#live_radio').is(':checked')==true && ($('#title_input').val() == "" || $('#hostname_input').val() =="") )
+	if ( $('#live_radio').is(':checked')==true )
 	{
-		$('#step1_error').text('Information incomplete');
-		return true;
+
+		if ($('#title_input').val() == "" || $('#hostname_input').val() =="")
+		{
+			$('#step1_error').text('Information incomplete');
+			 return true;
+		}
+
+		if ($('input[name="default_user"]').val() == "" )
+		{
+			$('#step1_error').text('Information incomplete');
+			 return true;
+		}
+
+		if ( ( $('input[name="default_password1"]').val() != $('input[name="default_password2"]').val() )  || $('input[name="default_password1"]').val() == "" )
+		{
+			$('#step1_error').text('Password mismatch');
+			 return true;
+		}
+
+	
 	}
 	
 	
