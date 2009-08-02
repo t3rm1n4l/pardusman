@@ -47,6 +47,7 @@ MEDIA_URL = ''
 
 REPOS_URL = '/home/mycode/repos'
 TMP_FILES = '/home/mycode/files'
+TMP_WALLPAPERS = '/home/mycode/wallpapers_collection'
 PROJECT_FILES = '/home/mycode/project_files'
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a

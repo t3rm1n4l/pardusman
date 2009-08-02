@@ -100,13 +100,12 @@ function wallpaper_upload()
 					$("#loading").hide();
 
 					});
-					
-					$('#wallpaper_items').prepend('<div class="wallpaper upload"><img style="cursor:pointer;" src="'+data.msg+'" /></div>');
+
+					$('.wallpaper').removeClass('selected_wallpaper');
+					$('#wallpaper_items').prepend('<div class="wallpaper upload selected_wallpaper"><img style="cursor:pointer;" src="'+data.msg+'" /></div>');
 					$('.upload').click(function(){$(this).fadeOut(100);$(this).fadeIn(100);
 
 
-					$('.wallpaper').removeClass('selected_wallpaper');
-					$(this).addClass("selected_wallpaper");
 
 
 
@@ -582,11 +581,7 @@ function load_step7()
 
 
 	$("#statusline").text("Distrotype > Repository > Languages > Upload > Packages > Wallpaper > Media");
-$(function()
-{
-	load_step6();
 
-});
 	$("#page6").hide() ;
 	$("#page8").hide() ;	
 }

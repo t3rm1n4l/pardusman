@@ -35,17 +35,20 @@ def upload(request):
 			for chunk in request.FILES['home_file'].chunks():
 				fd.write(chunk)
 			fd.close()
-			request.session['home_file'] = tmp
+			request.session['home_file'] = os.path.basename(tmp)
 			return HttpResponse("{ error:'error', \n msg:'success' \n}")
 
 	if request.FILES.has_key('wallpaper_file'):
 		if request.FILES['wallpaper_file'].content_type.startswith('image'):
-			tmp = tempfile.mkstemp(suffix='.%s' % request.FILES['wallpaper_file'].name.split('.',1)[1],prefix='wallpaper_',dir=os.path.join(settings.MEDIA_URL,'templates/user_wallpapers/fullsize'))[1]
+			tmp = tempfile.mkstemp(suffix='.%s' % request.FILES['wallpaper_file'].name.split('.',1)[1],prefix='wallpaper_',dir=os.path.join(settings.TMP_WALLPAPERS,'user_wallpapers'))[1]
 			fd = file(tmp,'w')
 			for chunk in request.FILES['wallpaper_file'].chunks():
 				fd.write(chunk)
 			fd.close()
-			fd = os.system("/usr/bin/convert %s  -resize 'x90' %s" % (tmp, os.path.join(settings.MEDIA_URL,'templates/user_wallpapers/',os.path.basename(tmp))))
+			png_file = split(".")[0] + ".png"
+			os.system("/usr/bin/convert %s %s" %(tmp,png_file))
+
+			fd = os.system("/usr/bin/convert %s  -resize 'x90' %s" % (tmp, os.path.join(settings.MEDIA_URL,'templates/user_wallpapers/',os.path.basename(png_file))))
 
 			return HttpResponse("{ error:'error', \n msg:'%s' \n}" % os.path.join('user_wallpapers',os.path.basename(tmp)))
 
@@ -57,7 +60,7 @@ def upload(request):
 			for chunk in request.FILES['release_file'].chunks():
 				fd.write(chunk)
 			fd.close()
-			request.session['release_file'] = tmp
+			request.session['release_file'] = os.path.basename(tmp)
 
 			return HttpResponse("{ error:'error', \n msg:'success' \n}")
 	
@@ -163,8 +166,14 @@ def generate_project_file(pool,username):
 	from pardusman.repotools.project import Project
 	from django.core.cache import cache
 	from pardusman.wizard.models import Userlogs,scheduled_distro
+	import tarfile,shutil
 
-	tmp_file = tempfile.mkstemp(suffix='.xml', prefix='project_',dir=os.path.join(settings.PROJECT_FILES))[1]
+	xml_file = tempfile.mkstemp(suffix='.xml', prefix='project_',dir=os.path.join(settings.TMP_FILES))[1]
+	project_file = tempfile.mkstemp(suffix='.tar.gz', prefix='project_',dir=os.path.join(settings.PROJECT_FILES))[1]
+
+	tar = tarfile.open(project_file,'w:gz')
+
+
 
 	project = Project()
 	project.title = pool['image_title']
@@ -185,12 +194,18 @@ def generate_project_file(pool,username):
 	if pool.has_key('wallpaper'):
 		if pool['wallpaper'] !='null':
 			project.wallpaper = pool['wallpaper']
+			tar.add(os.path.join(settings.TMP_WALLPAPERS,project.wallpaper),project.wallpaper)
+
 	
 
 	if pool.has_key('release_file'):
-		project.release_files = pool['release_file']
+		project.release_files = 'RELEASE.txt'
+		tar.add(os.path.join(settings.TMP_FILES,pool['release_file']),'RELEASE.txt')
+
 	if pool.has_key('home_file'):
-		project.user_contents = pool['home_file']
+		project.user_contents = 'user_contents.tar.gz' 
+		tar.add(os.path.join(settings.TMP_FILES,pool['home_file']),'user_contents.tar.gz')
+
 	lp = cache.get('live_packages')
 	lp.fix_components()
 	
@@ -199,8 +214,12 @@ def generate_project_file(pool,username):
 	project.selected_components = list(lp.components)
 	project.default_language = pool['languages'][0]
 	project.selected_languages = pool['languages']
-	
-	project.save(tmp_file)
+	project.save(xml_file)
+
+	tar.add(xml_file,'project.xml')
+
+	tar.close()
+
 	
 	
 	ulog,flag = Userlogs.objects.get_or_create(username=username)
@@ -213,7 +232,7 @@ def generate_project_file(pool,username):
 	sched_task.date = time.strftime("%Y-%m-%d")
 	sched_task.image_title = project.title
 	sched_task.image_url = ''
-	sched_task.project_url = tmp_file
+	sched_task.project_url = project_file
 	sched_task.image_type = project.type
 	sched_task.progress = False
 	sched_task.save()
