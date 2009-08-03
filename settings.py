@@ -50,6 +50,11 @@ TMP_FILES = '/home/mycode/files'
 TMP_WALLPAPERS = '/home/mycode/wallpapers_collection'
 PROJECT_FILES = '/home/mycode/project_files'
 
+BUILD_LIMIT = 2
+TIME_INTERVAL = 120
+BUILD_CACHE_DIR = '/home/code/buildcache'
+IMAGE_FORMATS = ['.iso','.img']
+
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
