@@ -45,12 +45,12 @@ def upload(request):
 			for chunk in request.FILES['wallpaper_file'].chunks():
 				fd.write(chunk)
 			fd.close()
-			png_file = split(".")[0] + ".png"
+			png_file = tmp.split(".")[0] + ".png"
 			os.system("/usr/bin/convert %s %s" %(tmp,png_file))
 
 			fd = os.system("/usr/bin/convert %s  -resize 'x90' %s" % (tmp, os.path.join(settings.MEDIA_URL,'templates/user_wallpapers/',os.path.basename(png_file))))
 
-			return HttpResponse("{ error:'error', \n msg:'%s' \n}" % os.path.join('user_wallpapers',os.path.basename(tmp)))
+			return HttpResponse("{ error:'error', \n msg:'%s' \n}" % os.path.join('user_wallpapers',os.path.basename(png_file)))
 
 
 	if request.FILES.has_key('release_file'):
@@ -165,7 +165,7 @@ def page_loader(request):
 def generate_project_file(pool,username):
 	from pardusman.repotools.project import Project
 	from django.core.cache import cache
-	from pardusman.wizard.models import Userlogs,scheduled_distro
+	from pardusman.wizard.models import Userlogs,scheduled_distro,buildfarm_queue
 	import tarfile,shutil
 
 	xml_file = tempfile.mkstemp(suffix='.xml', prefix='project_',dir=os.path.join(settings.TMP_FILES))[1]
@@ -220,10 +220,12 @@ def generate_project_file(pool,username):
 
 	tar.close()
 
-	
-	
+	os.chmod(project_file,655)
+
+	#Get the user object if exists else create new object
 	ulog,flag = Userlogs.objects.get_or_create(username=username)
 	
+
 	if flag == True:
 		ulog.username = username
 
@@ -232,14 +234,22 @@ def generate_project_file(pool,username):
 	sched_task.date = time.strftime("%Y-%m-%d")
 	sched_task.image_title = project.title
 	sched_task.image_url = ''
-	sched_task.project_url = project_file
+	sched_task.project_url = os.path.join(settings.BASE_PROJECTS_URL,'projects',os.path.basename(project_file))
 	sched_task.image_type = project.type
-	sched_task.progress = False
+	sched_task.progress = "Scheduled"
 	sched_task.save()
 	ulog.scheduled_tasks.add(sched_task)
 	ulog.save()
 	
 	
+	#Add project to the buildfarm queue
+	queue = buildfarm_queue()
+	queue.id = sched_task.id 
+	queue.date = sched_task.date
+	queue.project_file = project_file
+	queue.save()
+	
+
 
 def packages_pool_generator(request):
 	template = get_template('packages.html')

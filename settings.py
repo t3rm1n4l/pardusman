@@ -45,15 +45,18 @@ MEDIA_ROOT = '/home/mycode/pardusman/'
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = ''
 
-REPOS_URL = '/home/mycode/repos'
+REPOS_URL = '/mnt/sda7/pardus-repo'
 TMP_FILES = '/home/mycode/files'
 TMP_WALLPAPERS = '/home/mycode/wallpapers_collection'
 PROJECT_FILES = '/home/mycode/project_files'
 
-BUILD_LIMIT = 2
-TIME_INTERVAL = 120
-BUILD_CACHE_DIR = '/home/code/buildcache'
-IMAGE_FORMATS = ['.iso','.img']
+BUILD_LOGS = '/home/mycode/logs'
+BUILD_LIMIT = 10
+BUILDS_DIR = '/home/mycode/builds'
+BASE_PROJECTS_URL = 'http://localhost/pardusman'
+TIME_INTERVAL = 2
+BUILD_CACHE_DIR = '/mnt/sda7/pardus-repo/buildcache'
+IMAGE_FORMATS = ['.iso','.qemu']
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.

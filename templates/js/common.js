@@ -106,6 +106,10 @@ function wallpaper_upload()
 					$('.upload').click(function(){$(this).fadeOut(100);$(this).fadeIn(100);
 
 
+					    $('.wallpaper').removeClass('selected_wallpaper');
+                        $(this).addClass('selected_wallpaper')
+
+
 
 
 

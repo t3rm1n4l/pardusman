@@ -447,7 +447,7 @@ p.error_text
 	text-align:center;
 	top:5px;
 	font-family:Arial;
-	border: 1px solid black;'
+	border: 1px solid black;
 
 }
 
@@ -635,7 +635,7 @@ input.submit
 	padding:10px;
 	background-color:white;
 	border: 1px solid black;
-	height:200px;
+	min-height:200px;
 	color:black;
 	width:400px;
 }
