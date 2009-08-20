@@ -45,17 +45,38 @@ MEDIA_ROOT = '/home/mycode/pardusman/'
 # Examples: "http://media.lawrence.com", "http://example.com/media/"
 MEDIA_URL = ''
 
+
+#Path of the directory where repositories are located
 REPOS_URL = '/mnt/sda7/pardus-repo'
+
+#A directory which acts as /tmp for pardusman
 TMP_FILES = '/home/mycode/files'
+
+#A directory used to keep uploaded wallpapers
 TMP_WALLPAPERS = '/home/mycode/wallpapers_collection'
+
+#A directory used to keep generated project files (.tar.gz)
 PROJECT_FILES = '/home/mycode/project_files'
 
+#A directory for keeping build logs
 BUILD_LOGS = '/home/mycode/logs'
-BUILD_LIMIT = 10
+
+#Max number of builds that can be handled by the server at a time
+BUILD_LIMIT = 2
+
+#A directory where all the built images are stored
 BUILDS_DIR = '/home/mycode/builds'
+
+#Base url for making download links available [ A reference link ]
 BASE_PROJECTS_URL = 'http://localhost/pardusman'
+
+#Time interval for the Buildfarm Queue
 TIME_INTERVAL = 2
+
+#Build cache directory for Pardusman image builds
 BUILD_CACHE_DIR = '/mnt/sda7/pardus-repo/buildcache'
+
+# Supported Image formats for builds
 IMAGE_FORMATS = ['.iso','.qemu']
 
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a

@@ -106,6 +106,45 @@
 
 </div>
 
+
+
+<div id="popup_forgot">
+	<div id="popup_close" onClick='$("#popup").hide();' ></div>
+	<div id="sign_up" >
+		<form id="signup_form">
+		<table>
+		<tr><td><label class="content_label">User Name </label></td><td>
+		<input class="content_input" type="text" name="user" /></td></tr>
+		<tr><td><label class="content_label">Email </label></td><td>
+		<input class="content_input" type="email" name="email_id" /></td></tr>
+		<tr><td><label class="content_label">Password </label></td><td>
+		<input class="content_input" type="password" name="password1" /></td></tr>
+		<tr><td><label class="content_label">Confirm  </label></td><td>
+		<input class="content_input" type="password" name="password2" /></td></tr>
+		</table>
+		</form>
+		<div style='text-align:right; padding-top:11px; width:250px'> 
+		<input type="submit" value="Sign up" class="submit" onClick="sign_up();" /> 
+		</div>
+			<p id='error_signup' style='margin-top:-8px;'></p>
+
+	</div>
+	<div id="confirmation" style="display:none; width:200px; padding-left:140px; font-size:12px; color:#ad3d14;" >
+		<p> Do you want to proceed with building the custom distro with currently made configuration ?. You cannot cancel the build process if you go forward. If you want to make changes, navigate to prevous steps.
+		</p/>
+	<div style='text-align:right; padding-top:11px; width:250px'> 
+		<input type="submit" value="Yes" class="submit" onClick="$('#popup').hide(); load_step8();" /> 
+		<input type="submit" value="No" class="submit" onClick="$('#popup').hide();" /> 
+		</div>
+
+	</div>
+
+
+</div>
+
+
+
+
 <div id="loading"></div>
 
  

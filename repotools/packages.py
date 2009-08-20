@@ -3,13 +3,17 @@ import os
 import sys
 import urllib2
 import piksemel
+from django.core.cache import cache
+
+'''
+#Depricated database implementation
+
 from pardusman.wizard.models import Repository as Repobase
 from pardusman.wizard.models import Package as Packbase
 from pardusman.wizard.models import Dependency as Depbase
 from pardusman.wizard.models import Components as Compbase
-from django.core.cache import cache
 
-'''
+
 from utility import xterm_title
 
 class Console:
@@ -39,6 +43,7 @@ class ExPackageCycle(ExPisiIndex):
 class RepoNotInCache(Exception):
 	pass
 
+#Package object parsed from XML package list
 class Package:
     def __init__(self, node):
         self.name = node.getTagData('Name')
@@ -76,7 +81,7 @@ class Package:
 	'''
 
 
-
+#Component parsed XML object
 class Component:
     def __init__(self, node):
         self.node = node
@@ -88,6 +93,8 @@ class Component:
         return "Component: %s\nPackages: %s" % (self.name, ", ".join(self.packages))
 
 
+
+#XML parsed Repository DS
 class Repository:
     def __init__(self,name):
 		self.name = name
@@ -134,7 +141,8 @@ class Repository:
         except CycleException, c:
             raise ExPackageCycle, (c.cycle)
 
-    
+    '''
+    #Depricated implementation
     def save_to_db(self):   
         repo = Repobase(name=self.name,size=self.size,inst_size=self.inst_size)
 
@@ -173,7 +181,7 @@ class Repository:
 
 
     #FIXME: Database storage and retrival is very slow. A database cache is to be maintained. So we will use memcached which is awesome
-	'''
+
     
     def make_index(self, package_list):
         doc = piksemel.newDocument("PISI")
@@ -223,6 +231,7 @@ class Repository:
         f.close()
 	'''
 
+    #Get full dependency for a package
     def full_deps(self, package_name):
         deps = set()
         deps.add(package_name)
@@ -249,6 +258,8 @@ Total installed size: %d""" % (
             self.inst_size
         )
 
+
+#Memcached object for keeping the list of package selected by user and calculate size
 class LivePackagePool:
 	def __init__(self):
 

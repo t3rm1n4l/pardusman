@@ -436,6 +436,23 @@ p.error_text
 }
 
 
+#popup_forgot 
+{
+	width: 400px; 
+	height: 200px;
+	display:none;
+	position: absolute;
+	top: 260px;
+	left: 600px;
+	background-color:white;
+	border: 2px solid black;
+	background-image: url("images/popup_icon.png");
+	background-repeat: no-repeat;
+	background-position:8% 50%;
+
+}
+
+
 #popup_close 
 {
 	width:13px;
