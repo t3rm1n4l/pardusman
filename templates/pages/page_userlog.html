@@ -1,0 +1,46 @@
+<div id="page_userlog">
+			<div id="step_right">
+			<img src="images/steps/step2.png" />
+
+			<p class="description">The scheduled custom distro projects are listed down. You can download the completed distro image from the downloadable link. <br /></p>
+			<p class="description_title">Listings:</p>
+
+			
+			<form name="step1_form">
+			<div id="userlog">
+			<table>
+				<tr><th>Date</th><th>Image title</th><th>Image type</th><th>Status</th><th>Download</th></tr>
+				{% for entry in userlogs %}
+				  <tr>
+				  <td>{{ entry.date }}</td><td>{{ entry.image_title }}</td><td>{{ entry.image_type }}</td><td>{{ entry.progress }}</td>
+                  <td>
+                      
+                      {% ifnotequal entry.image_url "" %}
+
+                      <a href={{ entry.image_url }} > Image </a> 
+
+                      {% endifnotequal %}
+
+                      {% ifnotequal entry.log_url "" %}
+
+                      <a href={{ entry.log_url }} > Log </a> <br />
+
+                      {% endifnotequal %}
+                      <a href={{ entry.project_url }} > Project </a> </td>
+				</tr>
+				{% endfor %}
+			</table>
+
+			 </p>
+			</div>
+
+			</form>
+
+			<br class="spacing" />
+			
+			</div>
+			
+
+
+</div>
+

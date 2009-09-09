@@ -1,0 +1,7 @@
+- check depedencies
+    - PyQT, PyKDE, xdg-utils (for gui only)
+    - cdrtools
+    - squashfs-tools
+    - pisi
+- repotools package should be reviewed and refactored
+- new media type: package repository (no installer, just packages)
